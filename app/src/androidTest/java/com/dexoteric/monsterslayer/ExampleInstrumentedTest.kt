@@ -1,4 +1,4 @@
-package com.dexoteric.madalchemist
+package com.dexoteric.monsterslayer
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.dexoteric.madalchemist
+package com.dexoteric.monsterslayer
 
 import org.junit.Test
 
