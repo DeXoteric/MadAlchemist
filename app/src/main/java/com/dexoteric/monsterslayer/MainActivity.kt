@@ -1,10 +1,15 @@
 package com.dexoteric.monsterslayer
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 
 class MainActivity : AppCompatActivity() {
+
+    val arrayBossNames = resources.getStringArray(R.array.boss_name)
+    val arrayBossPrefix = resources.getStringArray(R.array.boss_prefix)
+    val arrayBossSufix = resources.getStringArray(R.array.boss_sufix)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
