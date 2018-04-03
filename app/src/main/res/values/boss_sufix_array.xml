@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="boss_sufix">
+
+        <item>of Destruction</item>
+
+    </string-array>
+
+</resources>
