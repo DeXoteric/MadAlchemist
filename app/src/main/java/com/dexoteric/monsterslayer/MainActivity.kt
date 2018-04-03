@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
     val arrayBossNames = resources.getStringArray(R.array.boss_name)
     val arrayBossPrefix = resources.getStringArray(R.array.boss_prefix)
     val arrayBossSufix = resources.getStringArray(R.array.boss_sufix)
+    
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
