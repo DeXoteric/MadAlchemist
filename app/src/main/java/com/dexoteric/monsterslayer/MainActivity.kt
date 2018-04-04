@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
+import com.dexoteric.monsterslayer.utils.getSmallCapsString
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val bossPrefix = arrayBossPrefix[0]
         val bossSuffix = arrayBossSuffix[0]
         val boss = "$bossPrefix $bossName $bossSuffix"
-        testText.text = boss
+        testText.text = getSmallCapsString(boss)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
