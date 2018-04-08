@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="10sp"
                 tools:text="Highest level boss killed" />
 
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="14sp"
                 tools:text="1 000 000" />
         </LinearLayout>
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="10sp"
                 tools:text="Gold" />
 
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="14sp"
                 tools:text="123.456E+999" />
         </LinearLayout>
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="10sp"
                 tools:text="Exp" />
 
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="14sp"
                 tools:text="10000" />
         </LinearLayout>
@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="10sp"
                 tools:text="Gems" />
 
@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorText"
                 android:textSize="14sp"
                 tools:text="100" />
         </LinearLayout>
@@ -225,7 +225,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             android:textSize="16sp"
             tools:text="Statistics" />
 
@@ -251,7 +251,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorText"
             android:textSize="16sp"
             tools:text="Inventory" />
 
@@ -278,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -298,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -318,7 +318,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -338,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -358,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -378,7 +378,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -398,7 +398,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -418,7 +418,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -438,7 +438,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -458,7 +458,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -478,7 +478,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -498,7 +498,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -518,7 +518,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -538,7 +538,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -558,7 +558,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -578,7 +578,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -598,7 +598,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -618,7 +618,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -638,7 +638,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -658,7 +658,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
@@ -678,7 +678,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="2" />
 
@@ -698,13 +698,84 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorText"
                     android:textSize="10sp"
                     tools:text="100" />
             </LinearLayout>
 
 
         </android.support.v7.widget.GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_slaying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/layout_inventory"
+        android:background="@drawable/ui_frame_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_monster_slaying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            tools:text="Monster Slaying" />
+
+        <ProgressBar
+            android:id="@+id/progress_monster_slaying"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:foreground="@drawable/ui_frame"
+            android:max="100"
+            android:paddingBottom="3dp"
+            android:paddingEnd="3dp"
+            android:paddingStart="3dp"
+            android:paddingTop="3dp"
+            android:progress="70"
+            android:progressDrawable="@drawable/progress_bar_slaying" />
+
+        <TextView
+            android:id="@+id/text_gold_looted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            tools:text="10000 gold looted!" />
+
+        <Button
+            android:id="@+id/btn_slay"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ui_frame"
+            android:textAllCaps="false"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            tools:text="Click to SLAY!" />
     </LinearLayout>
 
 

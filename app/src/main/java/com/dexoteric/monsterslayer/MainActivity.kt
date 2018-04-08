@@ -3,6 +3,7 @@ package com.dexoteric.monsterslayer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.dexoteric.monsterslayer.utils.getSmallCapsString
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     var ringLevel = 100
     var bootsTier = 10
     var bootsLevel = 100
+    var goldLooted = 10000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         // inicjalizacja Button
         val buttonRebirth: ImageButton = findViewById(R.id.btn_rebirth)
         val buttonOptions: ImageButton = findViewById(R.id.btn_options)
+        val buttonSlay: Button = findViewById(R.id.btn_slay)
+        buttonSlay.text = getSmallCapsString("Click to SLAY!")
 
         // inicjalizacja TextView
         val textPrestige: TextView = findViewById(R.id.text_prestige)
@@ -133,6 +137,12 @@ class MainActivity : AppCompatActivity() {
 
         val textHeroStats: TextView = findViewById(R.id.text_hero_stats)
         textHeroStats.text = getSmallCapsString("Hero Stats")
+
+        val textMonsterSlaying: TextView = findViewById(R.id.text_monster_slaying)
+        textMonsterSlaying.text = getSmallCapsString("Monster Slaying")
+
+        val textGoldLooted: TextView = findViewById(R.id.text_gold_looted)
+        textGoldLooted.text = getSmallCapsString(goldLooted.toString() + " gold looted!")
 
     }
 
