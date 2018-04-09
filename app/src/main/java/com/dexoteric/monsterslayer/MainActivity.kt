@@ -1,20 +1,24 @@
 package com.dexoteric.monsterslayer
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.dexoteric.monsterslayer.utils.getSmallCapsString
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     // inicjalizacja zmiennych
     var prestige = 1000000
-    var gold = 123.456E+99
+    private var gold = 0.00
     var exp = 100
-    var gems = 100
+    private var gems = 0
     var amuletTier = 10
     var amuletLevel = 100
     var helmetTier = 10
@@ -37,13 +41,21 @@ class MainActivity : AppCompatActivity() {
     var ringLevel = 100
     var bootsTier = 10
     var bootsLevel = 100
-    var goldLooted = 10000
+    var goldLooted = 1
+    private var progressMonsterSlaying = 0
+    private var gemChanceToDrop = 5 // %
+
+
+
+    private val handler = Handler()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         onWindowFocusChanged(true)
+
+
 
         // inicjalizacja Array
         val arrayBossNames: Array<String> = resources.getStringArray(R.array.boss_name)
@@ -141,8 +153,8 @@ class MainActivity : AppCompatActivity() {
         val textMonsterSlaying: TextView = findViewById(R.id.text_monster_slaying)
         textMonsterSlaying.text = getSmallCapsString("Monster Slaying")
 
-        val textGoldLooted: TextView = findViewById(R.id.text_gold_looted)
-        textGoldLooted.text = getSmallCapsString(goldLooted.toString() + " gold looted!")
+
+        monsterSlaying()
 
     }
 
@@ -164,6 +176,45 @@ class MainActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         window.decorView.systemUiVisibility = (flags)
+    }
+
+    // funkcja monster slaying progress bar
+    fun monsterSlaying() {
+
+        fun randomGemDropChance() :Boolean {
+            val r = Random()
+            val randomNumber: Int = r.nextInt(1000 + 1)
+            return randomNumber <= gemChanceToDrop * 10
+        }
+
+        // inicjalizacja ProgressBar
+        val progressBarMonsterSlaying: ProgressBar = findViewById(R.id.progress_monster_slaying)
+
+        // inicjalizacja TextView
+        val textGoldLooted: TextView = findViewById(R.id.text_gold_looted)
+
+        Thread(Runnable {
+            while (progressMonsterSlaying < 1200) {
+                progressMonsterSlaying++
+                Thread.sleep(1)
+                handler.post { progressBarMonsterSlaying.progress = progressMonsterSlaying }
+            }
+            handler.post {
+                if (randomGemDropChance()) {
+                    textGoldLooted.text = getSmallCapsString("$goldLooted gold looted! Gem looted!")
+                    gems++
+                    text_gems_value.text = gems.toString()
+                } else {
+                    textGoldLooted.text = getSmallCapsString("$goldLooted gold looted!")
+                }
+                    gold += goldLooted
+                    text_gold_value.text = gold.toString()
+                    progressMonsterSlaying = 0
+                    progressBarMonsterSlaying.progress = progressMonsterSlaying
+
+                monsterSlaying()
+            }
+        }).start()
     }
 
 }
