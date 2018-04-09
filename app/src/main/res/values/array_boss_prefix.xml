@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="boss_prefix">
+
+        <item>Amazing</item>
+        <item>Angry</item>
+
+        <item>Crazy</item>
+        <item>Cute</item>
+
+        <item>Mad</item>
+
+        <item>Strong</item>
+        <item>Stupid</item>
+
+        <item>Weak</item>
+
+    </string-array>
+
+
+
+</resources>

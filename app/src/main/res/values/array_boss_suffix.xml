@@ -3,7 +3,15 @@
 
     <string-array name="boss_suffix">
 
+
+        <item>of Chaos</item>
+
         <item>of Destruction</item>
+
+        <item>of Fire</item>
+
+        <item>of Ice</item>
+        <item>of Iron Mountains</item>
 
     </string-array>
 

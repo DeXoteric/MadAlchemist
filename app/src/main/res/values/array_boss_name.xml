@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="boss_name">
+
+
+        <item>Angel</item>
+
+        <item>Boar</item>
+
+        <item>Camel</item>
+
+        <item>Dromedary</item>
+
+        <item>Goblin</item>
+        <item>Grizzly Bear</item>
+
+        <item>Troll</item>
+
+    </string-array>
+
+</resources>
