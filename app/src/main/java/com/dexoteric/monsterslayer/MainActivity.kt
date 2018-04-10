@@ -12,13 +12,14 @@ import com.dexoteric.monsterslayer.utils.getSmallCapsString
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     // inicjalizacja zmiennych
     var prestige = 1000000
     private var gold = 0.00
-    var exp = 100
+    private var exp = 0
     private var gems = 0
+    private var bossLevel = 1
     var amuletTier = 10
     var amuletLevel = 100
     var helmetTier = 10
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     var bootsLevel = 100
     private var goldLooted = 1
     private var progressMonsterSlaying = 0
+    private var progressKillBoss = 0
     private var gemChanceToDrop = 5 // %
 
 
@@ -56,17 +58,15 @@ class MainActivity : AppCompatActivity() {
         onWindowFocusChanged(true)
 
 
-
-        // inicjalizacja Array
-        val arrayBossNames: Array<String> = resources.getStringArray(R.array.boss_name)
-        val arrayBossPrefix: Array<String> = resources.getStringArray(R.array.boss_prefix)
-        val arrayBossSuffix: Array<String> = resources.getStringArray(R.array.boss_suffix)
-
         // inicjalizacja Button
         val buttonRebirth: ImageButton = findViewById(R.id.btn_rebirth)
         val buttonOptions: ImageButton = findViewById(R.id.btn_options)
         val buttonSlay: Button = findViewById(R.id.btn_slay)
         buttonSlay.text = getSmallCapsString("Click to SLAY!")
+        buttonSlay.setOnClickListener(clickListener)
+        val buttonKillBoss: Button = findViewById(R.id.btn_kill_boss)
+        buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
+        buttonKillBoss.setOnClickListener(clickListener)
 
         // inicjalizacja TextView
         val textPrestige: TextView = findViewById(R.id.text_prestige)
@@ -153,9 +153,22 @@ class MainActivity : AppCompatActivity() {
         val textMonsterSlaying: TextView = findViewById(R.id.text_monster_slaying)
         textMonsterSlaying.text = getSmallCapsString("Monster Slaying")
 
+        val textBossName: TextView = findViewById(R.id.text_boss_name)
+        textBossName.text = getSmallCapsString(randomBossName())
+
+        val textBossLevel: TextView = findViewById(R.id.text_boss_level)
+        textBossLevel.text = getSmallCapsString("Level $bossLevel")
 
         monsterSlaying()
+    }
 
+    // click listener
+    private val clickListener: View.OnClickListener = View.OnClickListener { view ->
+        when (view.id) {
+            R.id.btn_kill_boss-> {
+                killBoss(text_boss_name, text_boss_level, btn_kill_boss)
+            }
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -181,7 +194,7 @@ class MainActivity : AppCompatActivity() {
     // funkcja monster slaying progress bar
     private fun monsterSlaying() {
 
-        fun randomGemDropChance() :Boolean {
+        fun randomGemDropChance(): Boolean {
             val r = Random()
             val randomNumber: Int = r.nextInt(1000 + 1)
             return randomNumber <= gemChanceToDrop * 10
@@ -207,14 +220,69 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     textGoldLooted.text = getSmallCapsString("$goldLooted gold looted!")
                 }
-                    gold += goldLooted
-                    text_gold_value.text = gold.toString()
-                    progressMonsterSlaying = 0
-                    progressBarMonsterSlaying.progress = progressMonsterSlaying
+                gold += goldLooted
+                text_gold_value.text = gold.toString()
+                progressMonsterSlaying = 0
+                progressBarMonsterSlaying.progress = progressMonsterSlaying
 
                 monsterSlaying()
             }
         }).start()
+    }
+
+    // funkcja generująca losową nazwę boss'a
+    private fun randomBossName() :String {
+
+        // inicjalizacja Array
+        val arrayBossNames: Array<String> = resources.getStringArray(R.array.boss_name)
+        val arrayBossPrefix: Array<String> = resources.getStringArray(R.array.boss_prefix)
+        val arrayBossSuffix: Array<String> = resources.getStringArray(R.array.boss_suffix)
+
+        val randomPrefix = Random().nextInt(arrayBossPrefix.size)
+        val prefix = arrayBossPrefix[randomPrefix]
+
+        val randomName = Random().nextInt(arrayBossNames.size)
+        val name = arrayBossNames[randomName]
+
+        val randomSuffix = Random().nextInt(arrayBossSuffix.size)
+        val suffix = arrayBossSuffix[randomSuffix]
+
+        return "$prefix $name $suffix"
+    }
+
+    // funkcja fight the boss progress bar
+    private fun killBoss(textBossName :TextView, textBossLevel :TextView, buttonKillBoss: Button) {
+
+        buttonKillBoss.text = getSmallCapsString("Fighting!")
+
+        // inicjalizacja ProgressBar
+        val progressBarKillBoss: ProgressBar = findViewById(R.id.progress_boss_health)
+
+        if (buttonKillBoss.isActivated) {
+
+        } else {
+            buttonKillBoss.isActivated = true
+            Thread(Runnable {
+                while (progressKillBoss < 2000) {
+                    progressKillBoss++
+                    Thread.sleep(1)
+                    handler.post { progressBarKillBoss.progress = progressKillBoss }
+                }
+                handler.post {
+                    bossLevel++
+                    exp++
+                    gems++
+                    textBossLevel.text = getSmallCapsString("Level $bossLevel")
+                    textBossName.text = getSmallCapsString(randomBossName())
+                    text_exp_value.text = exp.toString()
+                    text_gems_value.text = gems.toString()
+                    progressKillBoss = 0
+                    progressBarKillBoss.progress = progressKillBoss
+                    buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
+                    buttonKillBoss.isActivated = false
+                }
+            }).start()
+        }
     }
 
 }

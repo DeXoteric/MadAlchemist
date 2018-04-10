@@ -10,231 +10,234 @@
 
 
     <LinearLayout
-        android:id="@+id/layout_prestige"
-        android:layout_width="170dp"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:id="@+id/layout_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
-        android:background="@drawable/ui_frame_background"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/icon_prestige"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            app:srcCompat="@drawable/icon_prestige"
-            android:contentDescription="@string/content_description" />
+        <LinearLayout
+            android:id="@+id/layout_prestige"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/ui_frame_background"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp">
+
+            <ImageView
+                android:id="@+id/icon_prestige"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/content_description"
+                android:padding="8dp"
+                app:srcCompat="@drawable/icon_prestige" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_prestige"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text10sp"
+                    tools:text="Highest level boss killed" />
+
+                <TextView
+                    android:id="@+id/text_prestige_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    tools:text="1 000 000" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/layout_currency"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:orientation="horizontal"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp">
 
-            <TextView
-                android:id="@+id/text_prestige"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/text10sp"
-                tools:text="Highest level boss killed" />
+            <ImageView
+                android:id="@+id/icon_gold"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/content_description"
+                android:padding="8dp"
+                app:srcCompat="@drawable/icon_gold" />
 
-            <TextView
-                android:id="@+id/text_prestige_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
-                android:textColor="@color/colorText"
-                android:textSize="14sp"
-                tools:text="1 000 000" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_gold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text10sp"
+                    tools:text="Gold" />
+
+                <TextView
+                    android:id="@+id/text_gold_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    tools:text="123.456E+999" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/icon_exp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/content_description"
+                android:padding="10dp"
+                app:srcCompat="@drawable/icon_exp" />
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_exp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text10sp"
+                    tools:text="Exp" />
+
+                <TextView
+                    android:id="@+id/text_exp_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    tools:text="10000" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/icon_gems"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/content_description"
+                android:padding="10dp"
+                app:srcCompat="@drawable/icon_gem" />
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_gems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text10sp"
+                    tools:text="Gems" />
+
+                <TextView
+                    android:id="@+id/text_gems_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"
+                    tools:text="100" />
+            </LinearLayout>
+
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_options"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_options" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_currency"
+        android:id="@+id/layout_buttons"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="3dp"
-        android:layout_toEndOf="@id/layout_prestige"
-        android:background="@drawable/ui_frame_background"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/icon_gold"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            app:srcCompat="@drawable/icon_gold"
-            android:contentDescription="@string/content_description"/>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_gold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/text10sp"
-                tools:text="Gold" />
-
-            <TextView
-                android:id="@+id/text_gold_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="14sp"
-                tools:text="123.456E+999" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/icon_exp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            app:srcCompat="@drawable/icon_exp"
-            android:contentDescription="@string/content_description"/>
-
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_exp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/text10sp"
-                tools:text="Exp" />
-
-            <TextView
-                android:id="@+id/text_exp_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="14sp"
-                tools:text="10000" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/icon_gems"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            app:srcCompat="@drawable/icon_gem"
-            android:contentDescription="@string/content_description" />
-
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="3dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_gems"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/text10sp"
-                tools:text="Gems" />
-
-            <TextView
-                android:id="@+id/text_gems_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:textColor="@color/colorText"
-                android:textSize="14sp"
-                tools:text="100" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/btn_rebirth"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="2dp"
-        android:layout_marginTop="3dp"
-        android:layout_toStartOf="@id/btn_options"
-        android:background="@drawable/ui_frame_background"
-        android:padding="10dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/icon_rebirth"
-        android:contentDescription="@string/content_description"/>
-
-    <ImageButton
-        android:id="@+id/btn_options"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="3dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/ui_frame_background"
-        android:padding="10dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/icon_options"
-        android:contentDescription="@string/content_description"/>
-
-    <LinearLayout
-        android:id="@+id/layout_statistics"
-        android:layout_width="170dp"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/layout_prestige"
+        android:layout_below="@+id/layout_top_bar"
         android:layout_marginBottom="3dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="2dp"
-        android:background="@drawable/ui_frame_background"
+
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_hero_stats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textColor="@color/colorText"
-            android:textSize="16sp"
-            tools:text="Statistics" />
 
+        <ImageButton
+            android:id="@+id/btn_rebirth"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_rebirth" />
+
+        <ImageButton
+            android:id="@+id/btn_summary"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_rebirth" />
     </LinearLayout>
 
     <LinearLayout
@@ -242,11 +245,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/layout_prestige"
+        android:layout_below="@+id/layout_top_bar"
         android:layout_marginBottom="3dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@id/layout_statistics"
+        android:layout_toEndOf="@id/layout_buttons"
         android:background="@drawable/ui_frame_background"
         android:orientation="vertical">
 
@@ -296,8 +299,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_amulet"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_amulet" />
 
                 <TextView
                     android:id="@+id/text_amulet_level"
@@ -337,8 +340,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_helmet"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_helmet" />
 
                 <TextView
                     android:id="@+id/text_helmet_level"
@@ -378,8 +381,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_cloak"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_cloak" />
 
                 <TextView
                     android:id="@+id/text_cloak_level"
@@ -419,8 +422,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_weapon"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_weapon" />
 
                 <TextView
                     android:id="@+id/text_weapon_level"
@@ -460,8 +463,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_chestplate"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_chestplate" />
 
                 <TextView
                     android:id="@+id/text_chestplate_level"
@@ -501,8 +504,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_shield"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_shield" />
 
                 <TextView
                     android:id="@+id/text_shield_level"
@@ -542,8 +545,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_gloves"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_gloves" />
 
                 <TextView
                     android:id="@+id/text_gloves_level"
@@ -583,8 +586,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_leggings"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_leggings" />
 
                 <TextView
                     android:id="@+id/text_leggings_level"
@@ -624,8 +627,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_belt"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_belt" />
 
                 <TextView
                     android:id="@+id/text_belt_level"
@@ -665,8 +668,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_ring"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_ring" />
 
                 <TextView
                     android:id="@+id/text_ring_level"
@@ -706,8 +709,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_boots"
-                    android:contentDescription="@string/content_description"/>
+                    android:contentDescription="@string/content_description"
+                    app:srcCompat="@drawable/icon_boots" />
 
                 <TextView
                     android:id="@+id/text_boots_level"
@@ -725,17 +728,57 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_statistics"
+        android:layout_width="170dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/layout_top_bar"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/layout_inventory"
+        android:background="@drawable/ui_frame_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_hero_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            tools:text="Statistics" />
+
+        <TextView
+            android:id="@+id/text_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text10sp"
+            tools:text="HP: 123.456E+99
+HP/s: 12.345E+99
+ATK: 123.456E+99
+DEF: 123.456E+99" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/layout_boss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/layout_slaying"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/layout_prestige"
-        android:layout_marginBottom="3dp"
+        android:layout_below="@+id/layout_top_bar"
+        android:layout_marginBottom="2dp"
         android:layout_marginEnd="3dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@id/layout_inventory"
+        android:layout_toEndOf="@+id/layout_statistics"
         android:background="@drawable/ui_frame_background"
         android:orientation="vertical">
 
@@ -749,7 +792,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textColor="@color/colorText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             tools:text="Crazy Troll of Destruction" />
 
         <TextView
@@ -776,13 +819,27 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:foreground="@drawable/ui_frame"
-            android:max="100"
+            android:max="2000"
             android:paddingBottom="4dp"
             android:paddingEnd="4dp"
             android:paddingStart="4dp"
             android:paddingTop="4dp"
-            android:progress="70"
+            android:progress="0"
             android:progressDrawable="@drawable/progress_bar_slaying" />
+
+        <Button
+            android:id="@+id/btn_kill_boss"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_frame"
+            android:textAllCaps="false"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            tools:text="Fight the Boss!" />
 
     </LinearLayout>
 
@@ -791,10 +848,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="3dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@id/layout_inventory"
+        android:layout_toEndOf="@+id/layout_statistics"
         android:background="@drawable/ui_frame_background"
         android:orientation="vertical">
 
@@ -814,7 +873,7 @@
         <ProgressBar
             android:id="@+id/progress_monster_slaying"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="10dp"

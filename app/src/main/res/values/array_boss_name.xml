@@ -4,18 +4,20 @@
     <string-array name="boss_name">
 
 
-        <item>Angel</item>
-
+        <item>Black Bear</item>
         <item>Boar</item>
-
-        <item>Camel</item>
-
-        <item>Dromedary</item>
 
         <item>Goblin</item>
         <item>Grizzly Bear</item>
 
+        <item>Ogre</item>
+        <item>Orc</item>
+
+        <item>Skeleton</item>
+
         <item>Troll</item>
+
+        <item>Zombie</item>
 
     </string-array>
 
