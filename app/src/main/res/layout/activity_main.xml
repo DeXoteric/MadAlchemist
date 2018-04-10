@@ -26,7 +26,8 @@
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
             android:padding="8dp"
-            app:srcCompat="@drawable/icon_prestige" />
+            app:srcCompat="@drawable/icon_prestige"
+            android:contentDescription="@string/content_description" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/colorText"
-                android:textSize="10sp"
+                android:textSize="@dimen/text10sp"
                 tools:text="Highest level boss killed" />
 
             <TextView
@@ -75,7 +76,8 @@
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
             android:padding="8dp"
-            app:srcCompat="@drawable/icon_gold" />
+            app:srcCompat="@drawable/icon_gold"
+            android:contentDescription="@string/content_description"/>
 
         <LinearLayout
             android:layout_width="100dp"
@@ -92,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:textColor="@color/colorText"
-                android:textSize="10sp"
+                android:textSize="@dimen/text10sp"
                 tools:text="Gold" />
 
             <TextView
@@ -111,7 +113,8 @@
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
             android:padding="8dp"
-            app:srcCompat="@drawable/icon_exp" />
+            app:srcCompat="@drawable/icon_exp"
+            android:contentDescription="@string/content_description"/>
 
         <LinearLayout
             android:layout_width="50dp"
@@ -128,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:textColor="@color/colorText"
-                android:textSize="10sp"
+                android:textSize="@dimen/text10sp"
                 tools:text="Exp" />
 
             <TextView
@@ -147,7 +150,8 @@
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
             android:padding="8dp"
-            app:srcCompat="@drawable/icon_gem" />
+            app:srcCompat="@drawable/icon_gem"
+            android:contentDescription="@string/content_description" />
 
         <LinearLayout
             android:layout_width="50dp"
@@ -164,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:textColor="@color/colorText"
-                android:textSize="10sp"
+                android:textSize="@dimen/text10sp"
                 tools:text="Gems" />
 
             <TextView
@@ -190,7 +194,8 @@
         android:background="@drawable/ui_frame_background"
         android:padding="10dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/icon_rebirth" />
+        app:srcCompat="@drawable/icon_rebirth"
+        android:contentDescription="@string/content_description"/>
 
     <ImageButton
         android:id="@+id/btn_options"
@@ -203,7 +208,8 @@
         android:background="@drawable/ui_frame_background"
         android:padding="10dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/icon_options" />
+        app:srcCompat="@drawable/icon_options"
+        android:contentDescription="@string/content_description"/>
 
     <LinearLayout
         android:id="@+id/layout_statistics"
@@ -279,7 +285,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -290,7 +296,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_amulet" />
+                    app:srcCompat="@drawable/icon_amulet"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_amulet_level"
@@ -299,7 +306,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -319,7 +326,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -330,7 +337,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_helmet" />
+                    app:srcCompat="@drawable/icon_helmet"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_helmet_level"
@@ -339,7 +347,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -359,7 +367,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -370,7 +378,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_cloak" />
+                    app:srcCompat="@drawable/icon_cloak"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_cloak_level"
@@ -379,7 +388,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -399,7 +408,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -410,7 +419,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_weapon" />
+                    app:srcCompat="@drawable/icon_weapon"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_weapon_level"
@@ -419,7 +429,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -439,7 +449,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -450,7 +460,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_chestplate" />
+                    app:srcCompat="@drawable/icon_chestplate"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_chestplate_level"
@@ -459,7 +470,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -479,7 +490,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -490,7 +501,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_shield" />
+                    app:srcCompat="@drawable/icon_shield"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_shield_level"
@@ -499,7 +511,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -519,7 +531,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -530,7 +542,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_gloves" />
+                    app:srcCompat="@drawable/icon_gloves"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_gloves_level"
@@ -539,7 +552,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -559,7 +572,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -570,7 +583,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_leggings" />
+                    app:srcCompat="@drawable/icon_leggings"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_leggings_level"
@@ -579,7 +593,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -599,7 +613,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -610,7 +624,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_belt" />
+                    app:srcCompat="@drawable/icon_belt"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_belt_level"
@@ -619,7 +634,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -639,7 +654,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -650,7 +665,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_ring" />
+                    app:srcCompat="@drawable/icon_ring"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_ring_level"
@@ -659,7 +675,7 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
@@ -679,7 +695,7 @@
                     android:layout_marginTop="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="2" />
 
                 <ImageView
@@ -690,7 +706,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="2dp"
-                    app:srcCompat="@drawable/icon_boots" />
+                    app:srcCompat="@drawable/icon_boots"
+                    android:contentDescription="@string/content_description"/>
 
                 <TextView
                     android:id="@+id/text_boots_level"
@@ -699,12 +716,74 @@
                     android:layout_marginBottom="2dp"
                     android:gravity="center"
                     android:textColor="@color/colorText"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text10sp"
                     tools:text="100" />
             </LinearLayout>
 
 
         </android.support.v7.widget.GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_boss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_slaying"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/layout_prestige"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/layout_inventory"
+        android:background="@drawable/ui_frame_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_boss_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            tools:text="Crazy Troll of Destruction" />
+
+        <TextView
+            android:id="@+id/text_boss_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            tools:text="Level 100" />
+
+        <ProgressBar
+            android:id="@+id/progress_boss_health"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:foreground="@drawable/ui_frame"
+            android:max="100"
+            android:paddingBottom="4dp"
+            android:paddingEnd="4dp"
+            android:paddingStart="4dp"
+            android:paddingTop="4dp"
+            android:progress="70"
+            android:progressDrawable="@drawable/progress_bar_slaying" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -723,7 +802,6 @@
             android:id="@+id/text_monster_slaying"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -731,6 +809,7 @@
             android:textColor="@color/colorText"
             android:textSize="16sp"
             tools:text="Monster Slaying" />
+
 
         <ProgressBar
             android:id="@+id/progress_monster_slaying"
@@ -754,10 +833,8 @@
             android:id="@+id/text_gold_looted"
             android:layout_width="match_parent"
             android:layout_height="15dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
             android:gravity="center"
             android:textColor="@color/colorText"
             android:textSize="12sp"
@@ -766,16 +843,17 @@
         <Button
             android:id="@+id/btn_slay"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/ui_frame"
             android:textAllCaps="false"
             android:textColor="@color/colorText"
             android:textSize="18sp"
             tools:text="Click to SLAY!" />
+
     </LinearLayout>
 
 

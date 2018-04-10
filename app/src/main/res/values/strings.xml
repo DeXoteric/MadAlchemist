@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">Monster Slayer</string>
+    <string name="content_description" translatable="false"> Content Description</string>
 
 
 </resources>

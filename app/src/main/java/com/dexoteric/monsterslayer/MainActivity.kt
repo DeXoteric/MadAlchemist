@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     var ringLevel = 100
     var bootsTier = 10
     var bootsLevel = 100
-    var goldLooted = 1
+    private var goldLooted = 1
     private var progressMonsterSlaying = 0
     private var gemChanceToDrop = 5 // %
 
@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // funkcja monster slaying progress bar
-    fun monsterSlaying() {
+    private fun monsterSlaying() {
 
         fun randomGemDropChance() :Boolean {
             val r = Random()
