@@ -4,18 +4,69 @@
     <string-array name="boss_name">
 
 
+        <item>Ant</item>
+
+        <item>Basilisk</item>
+        <item>Bee</item>
+        <item>Beetle</item>
         <item>Black Bear</item>
         <item>Boar</item>
+        <item>Butterfly</item>
 
+        <item>Crab</item>
+        <item>Cyclop</item>
+
+        <Item>Dragon</Item>
+        <item>Drake</item>
+
+        <item>Elemental</item>
+        <item>Ettin</item>
+
+        <item>Frog</item>
+
+        <item>Gnoll</item>
         <item>Goblin</item>
+        <item>Golem</item>
         <item>Grizzly Bear</item>
 
+        <item>Hornet</item>
+        <item>Hound</item>
+        <item>Hydra</item>
+
+        <item>Iguana</item>
+
+        <item>Jackal</item>
+        <item>Jelly</item>
+
+        <item>Kobold</item>
+
+        <item>Moth</item>
+
+        <item>Naga</item>
+
         <item>Ogre</item>
+        <item>Ooze</item>
         <item>Orc</item>
 
-        <item>Skeleton</item>
+        <item>Rat</item>
 
+        <item>Scarab</item>
+        <item>Scorpion</item>
+        <item>Skeleton</item>
+        <item>Slime</item>
+        <item>Snake</item>
+        <item>Spider</item>
+
+        <item>Three-Headed Monkey</item>
+        <item>Titan</item>
         <item>Troll</item>
+        <item>Turtle</item>
+        <item>Two-Headed Ogre</item>
+
+        <item>Warg</item>
+        <item>Wasp</item>
+        <item>Wolf</item>
+        <item>Wyvern</item>
 
         <item>Zombie</item>
 
