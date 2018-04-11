@@ -8,9 +8,19 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.dexoteric.monsterslayer.utils.getNewValue
+import com.dexoteric.monsterslayer.utils.getRandomBossName
+import com.dexoteric.monsterslayer.utils.getRandomMultiplier
 import com.dexoteric.monsterslayer.utils.getSmallCapsString
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+
+
+var MULTIPLIER_1_07 = 1.07
+var MULTIPLIER_1_15 = 1.15
+var BOSS_BASE_HEALTH = 1000
+var BOSS_BASE_ATTACK_POWER = 1000
+var BOSS_BASE_DEFENSE = 1000
 
 class MainActivity : AppCompatActivity(){
 
@@ -20,6 +30,10 @@ class MainActivity : AppCompatActivity(){
     private var exp = 0
     private var gems = 0
     private var bossLevel = 1
+    private var bossHealth = BOSS_BASE_HEALTH
+    private var bossAttackPower = BOSS_BASE_ATTACK_POWER
+    private var bossDefense = BOSS_BASE_DEFENSE
+
     var amuletTier = 10
     var amuletLevel = 100
     var helmetTier = 10
@@ -42,12 +56,11 @@ class MainActivity : AppCompatActivity(){
     var ringLevel = 100
     var bootsTier = 10
     var bootsLevel = 100
+
     private var goldLooted = 1
     private var progressMonsterSlaying = 0
     private var progressKillBoss = 0
     private var gemChanceToDrop = 5 // %
-
-
 
     private val handler = Handler()
 
@@ -154,10 +167,16 @@ class MainActivity : AppCompatActivity(){
         textMonsterSlaying.text = getSmallCapsString("Monster Slaying")
 
         val textBossName: TextView = findViewById(R.id.text_boss_name)
-        textBossName.text = getSmallCapsString(randomBossName())
+        textBossName.text = getSmallCapsString(getRandomBossName(this))
 
         val textBossLevel: TextView = findViewById(R.id.text_boss_level)
         textBossLevel.text = getSmallCapsString("Level $bossLevel")
+
+        val textBossStats: TextView = findViewById(R.id.text_boss_stats)
+        textBossStats.text = getSmallCapsString("Health: $bossHealth\n" +
+                "Attack Power: $bossAttackPower\n" +
+                "Defense: $bossDefense")
+
 
         monsterSlaying()
     }
@@ -166,7 +185,7 @@ class MainActivity : AppCompatActivity(){
     private val clickListener: View.OnClickListener = View.OnClickListener { view ->
         when (view.id) {
             R.id.btn_kill_boss-> {
-                killBoss(text_boss_name, text_boss_level, btn_kill_boss)
+                killBoss(text_boss_name, text_boss_level, btn_kill_boss, text_boss_stats)
             }
         }
     }
@@ -230,28 +249,8 @@ class MainActivity : AppCompatActivity(){
         }).start()
     }
 
-    // funkcja generująca losową nazwę boss'a
-    private fun randomBossName() :String {
-
-        // inicjalizacja Array
-        val arrayBossNames: Array<String> = resources.getStringArray(R.array.boss_name)
-        val arrayBossPrefix: Array<String> = resources.getStringArray(R.array.boss_prefix)
-        val arrayBossSuffix: Array<String> = resources.getStringArray(R.array.boss_suffix)
-
-        val randomPrefix = Random().nextInt(arrayBossPrefix.size)
-        val prefix = arrayBossPrefix[randomPrefix]
-
-        val randomName = Random().nextInt(arrayBossNames.size)
-        val name = arrayBossNames[randomName]
-
-        val randomSuffix = Random().nextInt(arrayBossSuffix.size)
-        val suffix = arrayBossSuffix[randomSuffix]
-
-        return "$prefix $name $suffix"
-    }
-
     // funkcja fight the boss progress bar
-    private fun killBoss(textBossName :TextView, textBossLevel :TextView, buttonKillBoss: Button) {
+    private fun killBoss(textBossName :TextView, textBossLevel :TextView, buttonKillBoss: Button, textBossStats: TextView) {
 
         buttonKillBoss.text = getSmallCapsString("Fighting!")
 
@@ -272,8 +271,14 @@ class MainActivity : AppCompatActivity(){
                     bossLevel++
                     exp++
                     gems++
+                    bossHealth = getNewValue(BOSS_BASE_HEALTH, bossLevel, getRandomMultiplier())
+                    bossAttackPower = getNewValue(BOSS_BASE_ATTACK_POWER, bossLevel, getRandomMultiplier())
+                    bossDefense = getNewValue(BOSS_BASE_DEFENSE,bossLevel, getRandomMultiplier())
+                    textBossStats.text = getSmallCapsString("Health: $bossHealth\n" +
+                            "Attack Power: $bossAttackPower\n" +
+                            "Defense: $bossDefense")
                     textBossLevel.text = getSmallCapsString("Level $bossLevel")
-                    textBossName.text = getSmallCapsString(randomBossName())
+                    textBossName.text = getSmallCapsString(getRandomBossName(this))
                     text_exp_value.text = exp.toString()
                     text_gems_value.text = gems.toString()
                     progressKillBoss = 0
@@ -284,5 +289,6 @@ class MainActivity : AppCompatActivity(){
             }).start()
         }
     }
+
 
 }

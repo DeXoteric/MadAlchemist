@@ -827,6 +827,18 @@ DEF: 123.456E+99" />
             android:progress="0"
             android:progressDrawable="@drawable/progress_bar_slaying" />
 
+        <TextView
+            android:id="@+id/text_boss_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text10sp"
+            tools:text="HP
+            ATK: 123.456E+99
+DEF: 123.456E+99" />
+
         <Button
             android:id="@+id/btn_kill_boss"
             android:layout_width="match_parent"
