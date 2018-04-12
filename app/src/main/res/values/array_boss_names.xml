@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="boss_names">
+
+
+        <item>Name A</item>
+
+        <item>Name B</item>
+
+
+    </string-array>
+
+</resources>

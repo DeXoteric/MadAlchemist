@@ -8,10 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.dexoteric.monsterslayer.utils.getNewValue
-import com.dexoteric.monsterslayer.utils.getRandomBossName
-import com.dexoteric.monsterslayer.utils.getRandomMultiplier
-import com.dexoteric.monsterslayer.utils.getSmallCapsString
+import com.dexoteric.monsterslayer.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -21,6 +18,7 @@ var MULTIPLIER_1_15 = 1.15
 var BOSS_BASE_HEALTH = 1000
 var BOSS_BASE_ATTACK_POWER = 1000
 var BOSS_BASE_DEFENSE = 1000
+
 
 class MainActivity : AppCompatActivity(){
 
@@ -271,9 +269,9 @@ class MainActivity : AppCompatActivity(){
                     bossLevel++
                     exp++
                     gems++
-                    bossHealth = getNewValue(BOSS_BASE_HEALTH, bossLevel, getRandomMultiplier())
-                    bossAttackPower = getNewValue(BOSS_BASE_ATTACK_POWER, bossLevel, getRandomMultiplier())
-                    bossDefense = getNewValue(BOSS_BASE_DEFENSE,bossLevel, getRandomMultiplier())
+                    bossHealth = getNewValue(getRandomBossBaseStats(BOSS_BASE_HEALTH), bossLevel, MULTIPLIER_1_15)
+                    bossAttackPower = getNewValue(getRandomBossBaseStats(BOSS_BASE_ATTACK_POWER), bossLevel, MULTIPLIER_1_15)
+                    bossDefense = getNewValue(getRandomBossBaseStats(BOSS_BASE_DEFENSE),bossLevel, MULTIPLIER_1_15)
                     textBossStats.text = getSmallCapsString("Health: $bossHealth\n" +
                             "Attack Power: $bossAttackPower\n" +
                             "Defense: $bossDefense")
