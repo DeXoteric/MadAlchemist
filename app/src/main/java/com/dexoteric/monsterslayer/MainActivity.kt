@@ -12,9 +12,10 @@ import com.dexoteric.monsterslayer.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-
+var MULTIPLIER_0_10 = 0.10
 var MULTIPLIER_1_07 = 1.07
 var MULTIPLIER_1_15 = 1.15
+var SLAYING_BASE_GOLD = 10
 var BOSS_BASE_HEALTH = 1000
 var BOSS_BASE_ATTACK_POWER = 1000
 var BOSS_BASE_DEFENSE = 1000
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity(){
     var bootsTier = 10
     var bootsLevel = 100
 
-    private var goldLooted = 1
+    private var goldLooted = SLAYING_BASE_GOLD
     private var progressMonsterSlaying = 0
     private var progressKillBoss = 0
     private var gemChanceToDrop = 5 // %
@@ -238,6 +239,7 @@ class MainActivity : AppCompatActivity(){
                     textGoldLooted.text = getSmallCapsString("$goldLooted gold looted!")
                 }
                 gold += goldLooted
+                goldLooted = getNewValue(getRandomRangeValue(SLAYING_BASE_GOLD, 10.0), bossLevel, MULTIPLIER_1_07)
                 text_gold_value.text = gold.toString()
                 progressMonsterSlaying = 0
                 progressBarMonsterSlaying.progress = progressMonsterSlaying
@@ -269,9 +271,9 @@ class MainActivity : AppCompatActivity(){
                     bossLevel++
                     exp++
                     gems++
-                    bossHealth = getNewValue(getRandomBossBaseStats(BOSS_BASE_HEALTH), bossLevel, MULTIPLIER_1_15)
-                    bossAttackPower = getNewValue(getRandomBossBaseStats(BOSS_BASE_ATTACK_POWER), bossLevel, MULTIPLIER_1_15)
-                    bossDefense = getNewValue(getRandomBossBaseStats(BOSS_BASE_DEFENSE),bossLevel, MULTIPLIER_1_15)
+                    bossHealth = getNewValue(getRandomRangeValue(BOSS_BASE_HEALTH, 10.00), bossLevel, MULTIPLIER_1_15)
+                    bossAttackPower = getNewValue(getRandomRangeValue(BOSS_BASE_ATTACK_POWER, 10.00), bossLevel, MULTIPLIER_1_15)
+                    bossDefense = getNewValue(getRandomRangeValue(BOSS_BASE_DEFENSE, 10.00),bossLevel, MULTIPLIER_1_15)
                     textBossStats.text = getSmallCapsString("Health: $bossHealth\n" +
                             "Attack Power: $bossAttackPower\n" +
                             "Defense: $bossDefense")

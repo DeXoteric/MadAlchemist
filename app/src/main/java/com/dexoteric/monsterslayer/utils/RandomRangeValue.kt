@@ -2,11 +2,10 @@ package com.dexoteric.monsterslayer.utils
 
 import java.util.*
 
-var PERCENT = 0.1 // 10%
 
-fun getRandomBossBaseStats(baseValue: Int) : Int{
+fun getRandomRangeValue(baseValue: Int, percent: Double) : Int{
 
-    val minmax = baseValue * PERCENT
+    val minmax = baseValue * (percent / 100)
 
 
     val newMinValue = baseValue - minmax.toInt()
