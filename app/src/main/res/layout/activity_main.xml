@@ -221,6 +221,7 @@
             android:id="@+id/btn_rebirth"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
             android:background="@drawable/ui_frame_background"
             android:contentDescription="@string/content_description"
@@ -232,12 +233,49 @@
             android:id="@+id/btn_summary"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="1"
             android:background="@drawable/ui_frame_background"
             android:contentDescription="@string/content_description"
             android:padding="10dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/icon_rebirth" />
+
+        <ImageButton
+            android:id="@+id/btn_training"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_rebirth" />
+
+        <ImageButton
+            android:id="@+id/btn_perks"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_rebirth" />
+
+        <ImageButton
+            android:id="@+id/btn_achievements"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/ui_frame_background"
+            android:contentDescription="@string/content_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/icon_rebirth" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -760,9 +798,7 @@
             android:layout_marginStart="10dp"
             android:textColor="@color/colorText"
             android:textSize="@dimen/text10sp"
-            tools:text="HP: 123.456E+99
-HP/s: 12.345E+99
-ATK: 123.456E+99
+            tools:text="ATK: 123.456E+99
 DEF: 123.456E+99" />
 
     </LinearLayout>
@@ -835,9 +871,21 @@ DEF: 123.456E+99" />
             android:layout_marginStart="10dp"
             android:textColor="@color/colorText"
             android:textSize="@dimen/text10sp"
-            tools:text="HP
-            ATK: 123.456E+99
+            tools:text="ATK: 123.456E+99
 DEF: 123.456E+99" />
+
+        <TextView
+            android:id="@+id/text_boss_msg"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            tools:text="Kill kill kill!!!" />
 
         <Button
             android:id="@+id/btn_kill_boss"

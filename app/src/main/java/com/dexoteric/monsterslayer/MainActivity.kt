@@ -4,57 +4,88 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import com.dexoteric.monsterslayer.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
 var MULTIPLIER_1_07 = 1.07
-var MULTIPLIER_1_15 = 1.15
+//var MULTIPLIER_1_15 = 1.15
+var STAT_MULTIPLIER_LARGER = 24
+var STAT_MULTIPLIER_LARGE = 20
+var STAT_MULTIPLIER_NORMAL = 16
+var STAT_MULTIPLIER_SMALL = 12
+var STAT_MULTIPLIER_SMALLER = 8
 var SLAYING_BASE_GOLD = 10
-var BOSS_BASE_HEALTH = 1000
 var BOSS_BASE_ATTACK_POWER = 1000
 var BOSS_BASE_DEFENSE = 1000
+var HERO_BASE_ATTACK_POWER = 1000
+var HERO_BASE_DEFENSE = 1000
+var SLAYING_TIMER = 1200
+var BOSS_KILL_TIMER = 2000
 
 
 class MainActivity : AppCompatActivity() {
 
     // inicjalizacja zmiennych
-    var prestige = 1000000
+    private var prestige = 0
     private var gold = 0
     private var exp = 0
     private var gems = 0
     private var bossLevel = 1
-    private var bossHealth = BOSS_BASE_HEALTH
+    private var heroLevel = 1
+
     private var bossAttackPower = 900
     private var bossDefense = 900
+    private var heroAttackPower = 0
+    private var heroDefense = 0
 
-    var amuletTier = 10
-    var amuletLevel = 100
-    var helmetTier = 10
-    var helmetLevel = 100
-    var cloakTier = 10
-    var cloakLevel = 100
-    var weaponTier = 10
-    var weaponLevel = 100
-    var chestplateTier = 10
-    var chestplateLevel = 100
-    var shieldTier = 10
-    var shieldLevel = 100
-    var glovesTier = 10
-    var glovesLevel = 100
-    var leggingsTier = 10
-    var leggingsLevel = 100
-    var beltTier = 10
-    var beltLevel = 100
-    var ringTier = 10
-    var ringLevel = 100
-    var bootsTier = 10
-    var bootsLevel = 100
+    private var amuletTier = 1
+    private var amuletLevel = 1
+    private var amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
+    private var amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+    private var helmetTier = 1
+    private var helmetLevel = 1
+    private var helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+    private var helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+    private var cloakTier = 1
+    private var cloakLevel = 1
+    private var cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+    private var cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+    private var weaponTier = 1
+    private var weaponLevel = 1
+    private var weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+    private var weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+    private var chestplateTier = 1
+    private var chestplateLevel = 1
+    private var chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+    private var chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+    private var shieldTier = 1
+    private var shieldLevel = 1
+    private var shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+    private var shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+    private var glovesTier = 1
+    private var glovesLevel = 1
+    private var glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+    private var glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+    private var leggingsTier = 1
+    private var leggingsLevel = 1
+    private var leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+    private var leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+    private var beltTier = 1
+    private var beltLevel = 1
+    private var beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+    private var beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+    private var ringTier = 1
+    private var ringLevel = 1
+    private var ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+    private var ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+    private var bootsTier = 1
+    private var bootsLevel = 1
+    private var bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+    private var bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+
 
     private var goldLooted = SLAYING_BASE_GOLD
     private var progressMonsterSlaying = 0
@@ -70,15 +101,59 @@ class MainActivity : AppCompatActivity() {
         onWindowFocusChanged(true)
 
 
+
+        initAllViews()
+        refreshHeroStats(text_stats)
+
+        monsterSlaying()
+    }
+
+    private fun initAllViews() {
+
         // inicjalizacja Button
-        val buttonRebirth: ImageButton = findViewById(R.id.btn_rebirth)
         val buttonOptions: ImageButton = findViewById(R.id.btn_options)
+        buttonOptions.setOnClickListener(clickListener)
+        val buttonRebirth: ImageButton = findViewById(R.id.btn_rebirth)
+        buttonRebirth.setOnClickListener(clickListener)
+        val buttonSummary: ImageButton = findViewById(R.id.btn_summary)
+        buttonSummary.setOnClickListener(clickListener)
+        val buttonTraining: ImageButton = findViewById(R.id.btn_training)
+        buttonTraining.setOnClickListener(clickListener)
+        val buttonPerks: ImageButton = findViewById(R.id.btn_perks)
+        buttonPerks.setOnClickListener(clickListener)
+        val buttonAchievements: ImageButton = findViewById(R.id.btn_achievements)
+        buttonAchievements.setOnClickListener(clickListener)
         val buttonSlay: Button = findViewById(R.id.btn_slay)
         buttonSlay.text = getSmallCapsString("Click to SLAY!")
         buttonSlay.setOnClickListener(clickListener)
         val buttonKillBoss: Button = findViewById(R.id.btn_kill_boss)
         buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
         buttonKillBoss.setOnClickListener(clickListener)
+
+        // inicjalizacja inventory layouts
+        val layoutAmulet: LinearLayout = findViewById(R.id.layout_amulet)
+        layoutAmulet.setOnClickListener(clickListener)
+        val layoutHelmet: LinearLayout = findViewById(R.id.layout_helmet)
+        layoutHelmet.setOnClickListener(clickListener)
+        val layoutCloak: LinearLayout = findViewById(R.id.layout_cloak)
+        layoutCloak.setOnClickListener(clickListener)
+        val layoutWeapon: LinearLayout = findViewById(R.id.layout_weapon)
+        layoutWeapon.setOnClickListener(clickListener)
+        val layoutChestplate: LinearLayout = findViewById(R.id.layout_chestplate)
+        layoutChestplate.setOnClickListener(clickListener)
+        val layoutShield: LinearLayout = findViewById(R.id.layout_shield)
+        layoutShield.setOnClickListener(clickListener)
+        val layoutGloves: LinearLayout = findViewById(R.id.layout_gloves)
+        layoutGloves.setOnClickListener(clickListener)
+        val layoutLeggings: LinearLayout = findViewById(R.id.layout_leggings)
+        layoutLeggings.setOnClickListener(clickListener)
+        val layoutBelt: LinearLayout = findViewById(R.id.layout_belt)
+        layoutBelt.setOnClickListener(clickListener)
+        val layoutRing: LinearLayout = findViewById(R.id.layout_ring)
+        layoutRing.setOnClickListener(clickListener)
+        val layoutBoots: LinearLayout = findViewById(R.id.layout_boots)
+        layoutBoots.setOnClickListener(clickListener)
+
 
         // inicjalizacja TextView
         val textPrestige: TextView = findViewById(R.id.text_prestige)
@@ -161,6 +236,10 @@ class MainActivity : AppCompatActivity() {
 
         val textHeroStats: TextView = findViewById(R.id.text_hero_stats)
         textHeroStats.text = getSmallCapsString("Hero Stats")
+        val textStats: TextView = findViewById(R.id.text_stats)
+        textStats.text = getSmallCapsString("Hero Level: ${format(heroLevel)}\n" +
+                "Attack Power: ${format(heroAttackPower)}\n" +
+                "Defense: ${format(heroDefense)}")
 
         val textMonsterSlaying: TextView = findViewById(R.id.text_monster_slaying)
         textMonsterSlaying.text = getSmallCapsString("Monster Slaying")
@@ -172,19 +251,214 @@ class MainActivity : AppCompatActivity() {
         textBossLevel.text = getSmallCapsString("Level $bossLevel")
 
         val textBossStats: TextView = findViewById(R.id.text_boss_stats)
-        textBossStats.text = getSmallCapsString("Attack Power: $bossAttackPower\n" +
-                "Defense: $bossDefense")
+        textBossStats.text = getSmallCapsString("Attack Power: ${format(bossAttackPower)}\n" +
+                "Defense: ${format(bossDefense)}")
 
-
-        monsterSlaying()
+        val textBossMsg: TextView = findViewById(R.id.text_boss_msg)
+        textBossMsg.text = ""
     }
 
     // click listener
     private val clickListener: View.OnClickListener = View.OnClickListener { view ->
         when (view.id) {
             R.id.btn_kill_boss -> {
-                killBoss(text_boss_name, text_boss_level, btn_kill_boss, text_boss_stats)
+                killBoss(text_boss_name, text_boss_level, btn_kill_boss, text_boss_stats, text_boss_msg)
             }
+            R.id.btn_slay -> {
+
+            }
+            R.id.btn_rebirth -> {
+
+            }
+            R.id.btn_summary -> {
+
+            }
+            R.id.btn_training -> {
+
+            }
+            R.id.btn_perks -> {
+
+            }
+            R.id.btn_achievements -> {
+
+            }
+            R.id.layout_amulet -> {
+                if (amuletLevel == 100) {
+                    amuletTier++
+                    amuletLevel = 1
+                    text_amulet_tier.text = amuletTier.toString()
+                    text_amulet_level.text = amuletLevel.toString()
+                    amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
+                    amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+                    refreshHeroStats(text_stats)
+                } else
+                    amuletLevel++
+                text_amulet_level.text = amuletLevel.toString()
+                amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
+                amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_helmet -> {
+                if (helmetLevel == 100) {
+                    helmetTier++
+                    helmetLevel = 1
+                    text_helmet_tier.text = helmetTier.toString()
+                    text_helmet_level.text = helmetLevel.toString()
+                    helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+                    helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                } else
+                    helmetLevel++
+                text_helmet_level.text = helmetLevel.toString()
+                helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+                helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_cloak -> {
+                if (cloakLevel == 100) {
+                    cloakTier++
+                    cloakLevel = 1
+                    text_cloak_tier.text = cloakTier.toString()
+                    text_cloak_level.text = cloakLevel.toString()
+                    cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                    cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                    refreshHeroStats(text_stats)
+                } else
+                    cloakLevel++
+                text_cloak_level.text = cloakLevel.toString()
+                cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_weapon -> {
+                if (weaponLevel == 100) {
+                    weaponTier++
+                    weaponLevel = 1
+                    text_weapon_tier.text = weaponTier.toString()
+                    text_weapon_level.text = weaponLevel.toString()
+                     weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                     weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+                    refreshHeroStats(text_stats)
+                } else
+                    weaponLevel++
+                text_weapon_level.text = weaponLevel.toString()
+                 weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                 weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_chestplate -> {
+                if (chestplateLevel == 100) {
+                    chestplateTier++
+                    chestplateLevel = 1
+                    text_chestplate_tier.text = chestplateTier.toString()
+                    text_chestplate_level.text = chestplateLevel.toString()
+                     chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                     chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+                    refreshHeroStats(text_stats)
+                } else
+                    chestplateLevel++
+                text_chestplate_level.text = chestplateLevel.toString()
+                 chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                 chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_shield -> {
+                if (shieldLevel == 100) {
+                    shieldTier++
+                    shieldLevel = 1
+                    text_shield_tier.text = shieldTier.toString()
+                    text_shield_level.text = shieldLevel.toString()
+                     shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                     shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+                    refreshHeroStats(text_stats)
+                } else
+                    shieldLevel++
+                text_shield_level.text = shieldLevel.toString()
+                 shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                 shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_gloves -> {
+                if (glovesLevel == 100) {
+                    glovesTier++
+                    glovesLevel = 1
+                    text_gloves_tier.text = glovesTier.toString()
+                    text_gloves_level.text = glovesLevel.toString()
+                    glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+                    glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+                    refreshHeroStats(text_stats)
+                } else
+                    glovesLevel++
+                text_gloves_level.text = glovesLevel.toString()
+                 glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+                 glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_leggings -> {
+                if (leggingsLevel == 100) {
+                    leggingsTier++
+                    leggingsLevel = 1
+                    text_leggings_tier.text = leggingsTier.toString()
+                    text_leggings_level.text = leggingsLevel.toString()
+                     leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                     leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                } else
+                    leggingsLevel++
+                text_leggings_level.text = leggingsLevel.toString()
+                 leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                 leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_belt -> {
+                if (beltLevel == 100) {
+                    beltTier++
+                    beltLevel = 1
+                    text_belt_tier.text = beltTier.toString()
+                    text_belt_level.text = beltLevel.toString()
+                     beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                     beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+                    refreshHeroStats(text_stats)
+                } else
+                    beltLevel++
+                text_belt_level.text = beltLevel.toString()
+                 beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                 beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_ring -> {
+                if (ringLevel == 100) {
+                    ringTier++
+                    ringLevel = 1
+                    text_ring_tier.text = ringTier.toString()
+                    text_ring_level.text = ringLevel.toString()
+                     ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                     ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+                    refreshHeroStats(text_stats)
+                } else
+                    ringLevel++
+                text_ring_level.text = ringLevel.toString()
+                 ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                 ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+                refreshHeroStats(text_stats)
+            }
+            R.id.layout_boots -> {
+                if (bootsLevel == 100) {
+                    bootsTier++
+                    bootsLevel = 1
+                    text_boots_tier.text = bootsTier.toString()
+                    text_boots_level.text = bootsLevel.toString()
+                     bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                     bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                } else
+                    bootsLevel++
+                text_boots_level.text = bootsLevel.toString()
+                 bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                 bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+                refreshHeroStats(text_stats)
+            }
+
         }
     }
 
@@ -231,7 +505,7 @@ class MainActivity : AppCompatActivity() {
         val textGoldLooted: TextView = findViewById(R.id.text_gold_looted)
 
         Thread(Runnable {
-            while (progressMonsterSlaying < 1200) {
+            while (progressMonsterSlaying < SLAYING_TIMER) {
                 progressMonsterSlaying++
                 Thread.sleep(1)
                 handler.post { progressBarMonsterSlaying.progress = progressMonsterSlaying }
@@ -257,7 +531,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // funkcja fight the boss progress bar
-    private fun killBoss(textBossName: TextView, textBossLevel: TextView, buttonKillBoss: Button, textBossStats: TextView) {
+    private fun killBoss(textBossName: TextView, textBossLevel: TextView, buttonKillBoss: Button, textBossStats: TextView, textBossMsg: TextView) {
 
         fun randomAttackPower(): Int {
             val minPower = getNewValue(getMinValue(BOSS_BASE_ATTACK_POWER, 10.0), bossLevel, MULTIPLIER_1_07)
@@ -281,32 +555,57 @@ class MainActivity : AppCompatActivity() {
         if (buttonKillBoss.isActivated) {
 
         } else {
-            buttonKillBoss.isActivated = true
-            Thread(Runnable {
-                while (progressKillBoss < 2000) {
-                    progressKillBoss++
-                    Thread.sleep(1)
-                    handler.post { progressBarKillBoss.progress = progressKillBoss }
-                }
-                handler.post {
-                    bossLevel++
-                    exp++
-                    gems++
-                    bossAttackPower = randomAttackPower()
-                    bossDefense = randomDefence()
-                    textBossStats.text = getSmallCapsString("Attack Power: ${format(bossAttackPower)}\n" +
-                            "Defense: ${format(bossDefense)}")
-                    textBossLevel.text = getSmallCapsString("Level $bossLevel")
-                    textBossName.text = getSmallCapsString(getRandomBossName(this))
-                    text_exp_value.text = exp.toString()
-                    text_gems_value.text = gems.toString()
-                    progressKillBoss = 0
-                    progressBarKillBoss.progress = progressKillBoss
-                    buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
-                    buttonKillBoss.isActivated = false
-                }
-            }).start()
+            if (heroAttackPower < bossDefense && heroDefense < bossAttackPower) {
+                textBossMsg.text = getSmallCapsString("You are too weak!")
+            } else if (heroAttackPower < bossDefense && heroDefense > bossAttackPower) {
+                textBossMsg.text = getSmallCapsString("Boss is too tough!")
+            } else if (heroAttackPower > bossDefense && heroDefense < bossAttackPower) {
+                textBossMsg.text = getSmallCapsString("Boss is too strong!")
+            } else {
+                buttonKillBoss.isActivated = true
+                textBossMsg.text = ""
+                Thread(Runnable {
+                    while (progressKillBoss < BOSS_KILL_TIMER) {
+                        progressKillBoss++
+                        Thread.sleep(1)
+                        handler.post { progressBarKillBoss.progress = progressKillBoss }
+                    }
+                    handler.post {
+                        bossLevel++
+                        exp++
+                        gems++
+                        bossAttackPower = randomAttackPower()
+                        bossDefense = randomDefence()
+                        textBossStats.text = getSmallCapsString("Attack Power: ${format(bossAttackPower)}\n" +
+                                "Defense: ${format(bossDefense)}")
+                        textBossLevel.text = getSmallCapsString("Level $bossLevel")
+                        textBossName.text = getSmallCapsString(getRandomBossName(this))
+                        text_exp_value.text = exp.toString()
+                        text_gems_value.text = gems.toString()
+                        progressKillBoss = 0
+                        progressBarKillBoss.progress = progressKillBoss
+                        buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
+                        buttonKillBoss.isActivated = false
+                    }
+                }).start()
+            }
         }
+    }
+
+    private fun refreshHeroStats(textStats: TextView) {
+        heroAttackPower = HERO_BASE_ATTACK_POWER +
+                amuletAttackPower + helmetAttackPower + cloakAttackPower +
+                weaponAttackPower + chestplateAttackPower + shieldAttackPower +
+                glovesAttackPower + leggingsAttackPower + beltAttackPower +
+                ringAttackPower + bootsAttackPower
+        heroDefense = HERO_BASE_DEFENSE +
+                amuletDefense + helmetDefense + cloakDefense +
+                weaponDefense + chestplateDefense + shieldDefense +
+                glovesDefense + leggingsDefense + beltDefense +
+                ringDefense + bootsDefense
+        textStats.text = getSmallCapsString("Hero Level: ${format(heroLevel)}\n" +
+                "Attack Power: ${format(heroAttackPower)}\n" +
+                "Defense: ${format(heroDefense)}")
     }
 
 
