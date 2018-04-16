@@ -12,11 +12,11 @@ import java.util.*
 
 var MULTIPLIER_1_07 = 1.07
 var MULTIPLIER_1_15 = 1.15
-var STAT_MULTIPLIER_LARGER = 24
-var STAT_MULTIPLIER_LARGE = 20
-var STAT_MULTIPLIER_NORMAL = 16
-var STAT_MULTIPLIER_SMALL = 12
-var STAT_MULTIPLIER_SMALLER = 8
+var STAT_MULTIPLIER_LARGER = 120
+var STAT_MULTIPLIER_LARGE = 100
+var STAT_MULTIPLIER_NORMAL = 80
+var STAT_MULTIPLIER_SMALL = 60
+var STAT_MULTIPLIER_SMALLER = 40
 var SLAYING_BASE_GOLD = 10
 var BOSS_BASE_ATTACK_POWER = 1000
 var BOSS_BASE_DEFENSE = 1000
@@ -24,7 +24,7 @@ var HERO_BASE_ATTACK_POWER = 1000
 var HERO_BASE_DEFENSE = 1000
 var SLAYING_TIMER = 1200
 var BOSS_KILL_TIMER = 2000
-var INVENTORY_BASE_COST = 100
+var INVENTORY_BASE_COST = 10
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,57 +44,57 @@ class MainActivity : AppCompatActivity() {
 
     private var amuletTier = 1
     private var amuletLevel = 1
-    private var amuletCost = INVENTORY_BASE_COST
+    private var amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier)
     private var amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
     private var amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
     private var helmetTier = 1
     private var helmetLevel = 1
-    private var helmetCost = INVENTORY_BASE_COST
+    private var helmetCost = setInventoryCost(INVENTORY_BASE_COST, helmetLevel, helmetTier)
     private var helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
     private var helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
     private var cloakTier = 1
     private var cloakLevel = 1
-    private var cloakCost = INVENTORY_BASE_COST
+    private var cloakCost = setInventoryCost(INVENTORY_BASE_COST, cloakLevel, cloakTier)
     private var cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
     private var cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
     private var weaponTier = 1
     private var weaponLevel = 1
-    private var weaponCost = INVENTORY_BASE_COST
+    private var weaponCost = setInventoryCost(INVENTORY_BASE_COST, weaponLevel, weaponTier)
     private var weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
     private var weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
     private var chestplateTier = 1
     private var chestplateLevel = 1
-    private var chestplateCost = INVENTORY_BASE_COST
+    private var chestplateCost = setInventoryCost(INVENTORY_BASE_COST, chestplateLevel, chestplateTier)
     private var chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
     private var chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
     private var shieldTier = 1
     private var shieldLevel = 1
-    private var shieldCost = INVENTORY_BASE_COST
+    private var shieldCost = setInventoryCost(INVENTORY_BASE_COST, shieldLevel, shieldTier)
     private var shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
     private var shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
     private var glovesTier = 1
     private var glovesLevel = 1
-    private var glovesCost = INVENTORY_BASE_COST
+    private var glovesCost = setInventoryCost(INVENTORY_BASE_COST, glovesLevel, glovesTier)
     private var glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
     private var glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
     private var leggingsTier = 1
     private var leggingsLevel = 1
-    private var leggingsCost = INVENTORY_BASE_COST
+    private var leggingsCost = setInventoryCost(INVENTORY_BASE_COST, leggingsLevel, leggingsTier)
     private var leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
     private var leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
     private var beltTier = 1
     private var beltLevel = 1
-    private var beltCost = INVENTORY_BASE_COST
+    private var beltCost = setInventoryCost(INVENTORY_BASE_COST, beltLevel, beltTier)
     private var beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
     private var beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
     private var ringTier = 1
     private var ringLevel = 1
-    private var ringCost = INVENTORY_BASE_COST
+    private var ringCost = setInventoryCost(INVENTORY_BASE_COST, ringLevel, ringTier)
     private var ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
     private var ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
     private var bootsTier = 1
     private var bootsLevel = 1
-    private var bootsCost = INVENTORY_BASE_COST
+    private var bootsCost = setInventoryCost(INVENTORY_BASE_COST, bootsLevel, bootsTier)
     private var bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
     private var bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
 
@@ -117,14 +117,6 @@ class MainActivity : AppCompatActivity() {
         refreshHeroStats(text_stats)
         monsterSlaying()
 
-        // odświeżanie ceny za upgrade ekwipunku
-        Thread(Runnable {
-            Thread.sleep (1000)
-
-            handler.post {
-
-            }
-        }).start()
 
     }
 
@@ -285,7 +277,9 @@ class MainActivity : AppCompatActivity() {
                 killBoss(text_boss_name, text_boss_level, btn_kill_boss, text_boss_stats, text_boss_msg)
             }
             R.id.btn_slay -> {
-
+                gold += (goldLooted / 2)
+                text_gold_value.text = format(gold)
+                println("Gold from slaying: ${goldLooted / 2}")
             }
             R.id.btn_rebirth -> {
 
@@ -303,8 +297,8 @@ class MainActivity : AppCompatActivity() {
 
             }
             R.id.layout_amulet -> {
-                if (amuletCost > gold){
-
+                if (amuletCost > gold) {
+                    Toast.makeText(this, "Amulet Cost: ${format(amuletCost)}", Toast.LENGTH_SHORT).show()
                 } else {
                     if (amuletLevel == 100) {
                         amuletTier++
@@ -321,179 +315,262 @@ class MainActivity : AppCompatActivity() {
                         amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
 
                     }
+                    gold -= amuletCost
+                    text_gold_value.text = format(gold)
                 }
                 refreshHeroStats(text_stats)
-                amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier, MULTIPLIER_1_15)
+                amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier)
             }
             R.id.layout_helmet -> {
-                if (helmetLevel == 100) {
-                    helmetTier++
-                    helmetLevel = 1
-                    text_helmet_tier.text = helmetTier.toString()
-                    text_helmet_level.text = helmetLevel.toString()
-                    helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
-                    helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                if (helmetCost > gold) {
+
                 } else {
-                    helmetLevel++
-                    text_helmet_level.text = helmetLevel.toString()
-                    helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
-                    helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                    if (helmetLevel == 100) {
+                        helmetTier++
+                        helmetLevel = 1
+                        text_helmet_tier.text = helmetTier.toString()
+                        text_helmet_level.text = helmetLevel.toString()
+                        helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+                        helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+
+                    } else {
+                        helmetLevel++
+                        text_helmet_level.text = helmetLevel.toString()
+                        helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+                        helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+
+                    }
+                    gold -= helmetCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                helmetCost = setInventoryCost(INVENTORY_BASE_COST, helmetLevel, helmetTier)
             }
             R.id.layout_cloak -> {
-                if (cloakLevel == 100) {
-                    cloakTier++
-                    cloakLevel = 1
-                    text_cloak_tier.text = cloakTier.toString()
-                    text_cloak_level.text = cloakLevel.toString()
-                    cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                    cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                    refreshHeroStats(text_stats)
+                if (cloakCost > gold) {
+
                 } else {
-                    cloakLevel++
-                    text_cloak_level.text = cloakLevel.toString()
-                    cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                    cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                    refreshHeroStats(text_stats)
+                    if (cloakLevel == 100) {
+                        cloakTier++
+                        cloakLevel = 1
+                        text_cloak_tier.text = cloakTier.toString()
+                        text_cloak_level.text = cloakLevel.toString()
+                        cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                        cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+
+                    } else {
+                        cloakLevel++
+                        text_cloak_level.text = cloakLevel.toString()
+                        cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                        cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+
+                    }
+                    gold -= cloakCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                cloakCost = setInventoryCost(INVENTORY_BASE_COST, cloakLevel, cloakTier)
             }
             R.id.layout_weapon -> {
-                if (weaponLevel == 100) {
-                    weaponTier++
-                    weaponLevel = 1
-                    text_weapon_tier.text = weaponTier.toString()
-                    text_weapon_level.text = weaponLevel.toString()
-                    weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
-                    weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
-                    refreshHeroStats(text_stats)
+                if (weaponCost > gold) {
+
                 } else {
-                    weaponLevel++
-                    text_weapon_level.text = weaponLevel.toString()
-                    weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
-                    weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
-                    refreshHeroStats(text_stats)
+                    if (weaponLevel == 100) {
+                        weaponTier++
+                        weaponLevel = 1
+                        text_weapon_tier.text = weaponTier.toString()
+                        text_weapon_level.text = weaponLevel.toString()
+                        weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                        weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+
+                    } else {
+                        weaponLevel++
+                        text_weapon_level.text = weaponLevel.toString()
+                        weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                        weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+
+
+                    }
+                    gold -= weaponCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                weaponCost = setInventoryCost(INVENTORY_BASE_COST, weaponLevel, weaponTier)
             }
             R.id.layout_chestplate -> {
-                if (chestplateLevel == 100) {
-                    chestplateTier++
-                    chestplateLevel = 1
-                    text_chestplate_tier.text = chestplateTier.toString()
-                    text_chestplate_level.text = chestplateLevel.toString()
-                    chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
-                    chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
-                    refreshHeroStats(text_stats)
+                if (chestplateCost > gold) {
+
                 } else {
-                    chestplateLevel++
-                    text_chestplate_level.text = chestplateLevel.toString()
-                    chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
-                    chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
-                    refreshHeroStats(text_stats)
+                    if (chestplateLevel == 100) {
+                        chestplateTier++
+                        chestplateLevel = 1
+                        text_chestplate_tier.text = chestplateTier.toString()
+                        text_chestplate_level.text = chestplateLevel.toString()
+                        chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                        chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+
+                    } else {
+                        chestplateLevel++
+                        text_chestplate_level.text = chestplateLevel.toString()
+                        chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                        chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+
+                    }
+                    gold -= chestplateCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                chestplateCost = setInventoryCost(INVENTORY_BASE_COST, chestplateLevel, chestplateTier)
             }
             R.id.layout_shield -> {
-                if (shieldLevel == 100) {
-                    shieldTier++
-                    shieldLevel = 1
-                    text_shield_tier.text = shieldTier.toString()
-                    text_shield_level.text = shieldLevel.toString()
-                    shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
-                    shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
-                    refreshHeroStats(text_stats)
+                if (shieldCost > gold) {
+
                 } else {
-                    shieldLevel++
-                    text_shield_level.text = shieldLevel.toString()
-                    shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
-                    shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
-                    refreshHeroStats(text_stats)
+                    if (shieldLevel == 100) {
+                        shieldTier++
+                        shieldLevel = 1
+                        text_shield_tier.text = shieldTier.toString()
+                        text_shield_level.text = shieldLevel.toString()
+                        shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                        shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+
+                    } else {
+                        shieldLevel++
+                        text_shield_level.text = shieldLevel.toString()
+                        shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                        shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+
+                    }
+                    gold -= shieldCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                shieldCost = setInventoryCost(INVENTORY_BASE_COST, shieldLevel, shieldTier)
             }
             R.id.layout_gloves -> {
-                if (glovesLevel == 100) {
-                    glovesTier++
-                    glovesLevel = 1
-                    text_gloves_tier.text = glovesTier.toString()
-                    text_gloves_level.text = glovesLevel.toString()
-                    glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
-                    glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
-                    refreshHeroStats(text_stats)
+                if (glovesCost > gold) {
+
                 } else {
-                    glovesLevel++
-                    text_gloves_level.text = glovesLevel.toString()
-                    glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
-                    glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
-                    refreshHeroStats(text_stats)
+                    if (glovesLevel == 100) {
+                        glovesTier++
+                        glovesLevel = 1
+                        text_gloves_tier.text = glovesTier.toString()
+                        text_gloves_level.text = glovesLevel.toString()
+                        glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+                        glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+
+                    } else {
+                        glovesLevel++
+                        text_gloves_level.text = glovesLevel.toString()
+                        glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+                        glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+
+                    }
+                    gold -= glovesCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                glovesCost = setInventoryCost(INVENTORY_BASE_COST, glovesLevel, glovesTier)
             }
             R.id.layout_leggings -> {
-                if (leggingsLevel == 100) {
-                    leggingsTier++
-                    leggingsLevel = 1
-                    text_leggings_tier.text = leggingsTier.toString()
-                    text_leggings_level.text = leggingsLevel.toString()
-                    leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
-                    leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                if (leggingsCost > gold) {
+
                 } else {
-                    leggingsLevel++
-                    text_leggings_level.text = leggingsLevel.toString()
-                    leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
-                    leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                    if (leggingsLevel == 100) {
+                        leggingsTier++
+                        leggingsLevel = 1
+                        text_leggings_tier.text = leggingsTier.toString()
+                        text_leggings_level.text = leggingsLevel.toString()
+                        leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                        leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+
+                    } else {
+                        leggingsLevel++
+                        text_leggings_level.text = leggingsLevel.toString()
+                        leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                        leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+
+                    }
+                    gold -= leggingsCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                leggingsCost = setInventoryCost(INVENTORY_BASE_COST, leggingsLevel, leggingsTier)
             }
             R.id.layout_belt -> {
-                if (beltLevel == 100) {
-                    beltTier++
-                    beltLevel = 1
-                    text_belt_tier.text = beltTier.toString()
-                    text_belt_level.text = beltLevel.toString()
-                    beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
-                    beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
-                    refreshHeroStats(text_stats)
+                if (beltCost > gold) {
+
                 } else {
-                    beltLevel++
-                    text_belt_level.text = beltLevel.toString()
-                    beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
-                    beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
-                    refreshHeroStats(text_stats)
+                    if (beltLevel == 100) {
+                        beltTier++
+                        beltLevel = 1
+                        text_belt_tier.text = beltTier.toString()
+                        text_belt_level.text = beltLevel.toString()
+                        beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                        beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+
+                    } else {
+                        beltLevel++
+                        text_belt_level.text = beltLevel.toString()
+                        beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                        beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+
+                    }
+                    gold -= beltCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                beltCost = setInventoryCost(INVENTORY_BASE_COST, beltLevel, beltTier)
             }
             R.id.layout_ring -> {
-                if (ringLevel == 100) {
-                    ringTier++
-                    ringLevel = 1
-                    text_ring_tier.text = ringTier.toString()
-                    text_ring_level.text = ringLevel.toString()
-                    ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
-                    ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
-                    refreshHeroStats(text_stats)
+                if (ringCost > gold) {
+
                 } else {
-                    ringLevel++
-                    text_ring_level.text = ringLevel.toString()
-                    ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
-                    ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
-                    refreshHeroStats(text_stats)
+                    if (ringLevel == 100) {
+                        ringTier++
+                        ringLevel = 1
+                        text_ring_tier.text = ringTier.toString()
+                        text_ring_level.text = ringLevel.toString()
+                        ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                        ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+
+                    } else {
+                        ringLevel++
+                        text_ring_level.text = ringLevel.toString()
+                        ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                        ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+
+                    }
+                    gold -= ringCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                ringCost = setInventoryCost(INVENTORY_BASE_COST, ringLevel, ringTier)
             }
             R.id.layout_boots -> {
-                if (bootsLevel == 100) {
-                    bootsTier++
-                    bootsLevel = 1
-                    text_boots_tier.text = bootsTier.toString()
-                    text_boots_level.text = bootsLevel.toString()
-                    bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
-                    bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                if (bootsCost > gold) {
+
                 } else {
-                    bootsLevel++
-                    text_boots_level.text = bootsLevel.toString()
-                    bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
-                    bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
-                    refreshHeroStats(text_stats)
+                    if (bootsLevel == 100) {
+                        bootsTier++
+                        bootsLevel = 1
+                        text_boots_tier.text = bootsTier.toString()
+                        text_boots_level.text = bootsLevel.toString()
+                        bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                        bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+
+                    } else {
+                        bootsLevel++
+                        text_boots_level.text = bootsLevel.toString()
+                        bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                        bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+
+                    }
+                    gold -= bootsCost
+                    text_gold_value.text = format(gold)
                 }
+                refreshHeroStats(text_stats)
+                bootsCost = setInventoryCost(INVENTORY_BASE_COST, bootsLevel, bootsTier)
             }
 
         }
