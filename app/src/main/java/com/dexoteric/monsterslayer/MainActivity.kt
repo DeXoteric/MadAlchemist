@@ -11,7 +11,7 @@ import java.util.*
 
 
 var MULTIPLIER_1_07 = 1.07
-//var MULTIPLIER_1_15 = 1.15
+var MULTIPLIER_1_15 = 1.15
 var STAT_MULTIPLIER_LARGER = 24
 var STAT_MULTIPLIER_LARGE = 20
 var STAT_MULTIPLIER_NORMAL = 16
@@ -24,6 +24,7 @@ var HERO_BASE_ATTACK_POWER = 1000
 var HERO_BASE_DEFENSE = 1000
 var SLAYING_TIMER = 1200
 var BOSS_KILL_TIMER = 2000
+var INVENTORY_BASE_COST = 100
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,46 +44,57 @@ class MainActivity : AppCompatActivity() {
 
     private var amuletTier = 1
     private var amuletLevel = 1
+    private var amuletCost = INVENTORY_BASE_COST
     private var amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
     private var amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
     private var helmetTier = 1
     private var helmetLevel = 1
+    private var helmetCost = INVENTORY_BASE_COST
     private var helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
     private var helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
     private var cloakTier = 1
     private var cloakLevel = 1
+    private var cloakCost = INVENTORY_BASE_COST
     private var cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
     private var cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
     private var weaponTier = 1
     private var weaponLevel = 1
+    private var weaponCost = INVENTORY_BASE_COST
     private var weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
     private var weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
     private var chestplateTier = 1
     private var chestplateLevel = 1
+    private var chestplateCost = INVENTORY_BASE_COST
     private var chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
     private var chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
     private var shieldTier = 1
     private var shieldLevel = 1
+    private var shieldCost = INVENTORY_BASE_COST
     private var shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
     private var shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
     private var glovesTier = 1
     private var glovesLevel = 1
+    private var glovesCost = INVENTORY_BASE_COST
     private var glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
     private var glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
     private var leggingsTier = 1
     private var leggingsLevel = 1
+    private var leggingsCost = INVENTORY_BASE_COST
     private var leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
     private var leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
     private var beltTier = 1
     private var beltLevel = 1
+    private var beltCost = INVENTORY_BASE_COST
     private var beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
     private var beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
     private var ringTier = 1
     private var ringLevel = 1
+    private var ringCost = INVENTORY_BASE_COST
     private var ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
     private var ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
     private var bootsTier = 1
     private var bootsLevel = 1
+    private var bootsCost = INVENTORY_BASE_COST
     private var bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
     private var bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
 
@@ -101,11 +113,19 @@ class MainActivity : AppCompatActivity() {
         onWindowFocusChanged(true)
 
 
-
         initAllViews()
         refreshHeroStats(text_stats)
-
         monsterSlaying()
+
+        // odświeżanie ceny za upgrade ekwipunku
+        Thread(Runnable {
+            Thread.sleep (1000)
+
+            handler.post {
+
+            }
+        }).start()
+
     }
 
     private fun initAllViews() {
@@ -283,20 +303,27 @@ class MainActivity : AppCompatActivity() {
 
             }
             R.id.layout_amulet -> {
-                if (amuletLevel == 100) {
-                    amuletTier++
-                    amuletLevel = 1
-                    text_amulet_tier.text = amuletTier.toString()
-                    text_amulet_level.text = amuletLevel.toString()
-                    amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
-                    amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
-                    refreshHeroStats(text_stats)
-                } else
-                    amuletLevel++
-                text_amulet_level.text = amuletLevel.toString()
-                amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
-                amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+                if (amuletCost > gold){
+
+                } else {
+                    if (amuletLevel == 100) {
+                        amuletTier++
+                        amuletLevel = 1
+                        text_amulet_tier.text = amuletTier.toString()
+                        text_amulet_level.text = amuletLevel.toString()
+                        amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
+                        amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+
+                    } else {
+                        amuletLevel++
+                        text_amulet_level.text = amuletLevel.toString()
+                        amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
+                        amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
+
+                    }
+                }
                 refreshHeroStats(text_stats)
+                amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier, MULTIPLIER_1_15)
             }
             R.id.layout_helmet -> {
                 if (helmetLevel == 100) {
@@ -307,12 +334,13 @@ class MainActivity : AppCompatActivity() {
                     helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
                     helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     helmetLevel++
-                text_helmet_level.text = helmetLevel.toString()
-                helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
-                helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
-                refreshHeroStats(text_stats)
+                    text_helmet_level.text = helmetLevel.toString()
+                    helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
+                    helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_cloak -> {
                 if (cloakLevel == 100) {
@@ -323,12 +351,13 @@ class MainActivity : AppCompatActivity() {
                     cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
                     cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     cloakLevel++
-                text_cloak_level.text = cloakLevel.toString()
-                cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
-                refreshHeroStats(text_stats)
+                    text_cloak_level.text = cloakLevel.toString()
+                    cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                    cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_weapon -> {
                 if (weaponLevel == 100) {
@@ -336,15 +365,16 @@ class MainActivity : AppCompatActivity() {
                     weaponLevel = 1
                     text_weapon_tier.text = weaponTier.toString()
                     text_weapon_level.text = weaponLevel.toString()
-                     weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
-                     weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+                    weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                    weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     weaponLevel++
-                text_weapon_level.text = weaponLevel.toString()
-                 weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
-                 weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
-                refreshHeroStats(text_stats)
+                    text_weapon_level.text = weaponLevel.toString()
+                    weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
+                    weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_chestplate -> {
                 if (chestplateLevel == 100) {
@@ -352,15 +382,16 @@ class MainActivity : AppCompatActivity() {
                     chestplateLevel = 1
                     text_chestplate_tier.text = chestplateTier.toString()
                     text_chestplate_level.text = chestplateLevel.toString()
-                     chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
-                     chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+                    chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                    chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     chestplateLevel++
-                text_chestplate_level.text = chestplateLevel.toString()
-                 chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
-                 chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
-                refreshHeroStats(text_stats)
+                    text_chestplate_level.text = chestplateLevel.toString()
+                    chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
+                    chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_shield -> {
                 if (shieldLevel == 100) {
@@ -368,15 +399,16 @@ class MainActivity : AppCompatActivity() {
                     shieldLevel = 1
                     text_shield_tier.text = shieldTier.toString()
                     text_shield_level.text = shieldLevel.toString()
-                     shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
-                     shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+                    shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                    shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     shieldLevel++
-                text_shield_level.text = shieldLevel.toString()
-                 shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
-                 shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
-                refreshHeroStats(text_stats)
+                    text_shield_level.text = shieldLevel.toString()
+                    shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
+                    shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_gloves -> {
                 if (glovesLevel == 100) {
@@ -387,12 +419,13 @@ class MainActivity : AppCompatActivity() {
                     glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
                     glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     glovesLevel++
-                text_gloves_level.text = glovesLevel.toString()
-                 glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
-                 glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
-                refreshHeroStats(text_stats)
+                    text_gloves_level.text = glovesLevel.toString()
+                    glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
+                    glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_leggings -> {
                 if (leggingsLevel == 100) {
@@ -400,15 +433,16 @@ class MainActivity : AppCompatActivity() {
                     leggingsLevel = 1
                     text_leggings_tier.text = leggingsTier.toString()
                     text_leggings_level.text = leggingsLevel.toString()
-                     leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
-                     leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+                    leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                    leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     leggingsLevel++
-                text_leggings_level.text = leggingsLevel.toString()
-                 leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
-                 leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
-                refreshHeroStats(text_stats)
+                    text_leggings_level.text = leggingsLevel.toString()
+                    leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
+                    leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_belt -> {
                 if (beltLevel == 100) {
@@ -416,15 +450,16 @@ class MainActivity : AppCompatActivity() {
                     beltLevel = 1
                     text_belt_tier.text = beltTier.toString()
                     text_belt_level.text = beltLevel.toString()
-                     beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
-                     beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+                    beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                    beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     beltLevel++
-                text_belt_level.text = beltLevel.toString()
-                 beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
-                 beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
-                refreshHeroStats(text_stats)
+                    text_belt_level.text = beltLevel.toString()
+                    beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
+                    beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_ring -> {
                 if (ringLevel == 100) {
@@ -432,15 +467,16 @@ class MainActivity : AppCompatActivity() {
                     ringLevel = 1
                     text_ring_tier.text = ringTier.toString()
                     text_ring_level.text = ringLevel.toString()
-                     ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
-                     ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+                    ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                    ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     ringLevel++
-                text_ring_level.text = ringLevel.toString()
-                 ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
-                 ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
-                refreshHeroStats(text_stats)
+                    text_ring_level.text = ringLevel.toString()
+                    ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
+                    ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
+                    refreshHeroStats(text_stats)
+                }
             }
             R.id.layout_boots -> {
                 if (bootsLevel == 100) {
@@ -448,15 +484,16 @@ class MainActivity : AppCompatActivity() {
                     bootsLevel = 1
                     text_boots_tier.text = bootsTier.toString()
                     text_boots_level.text = bootsLevel.toString()
-                     bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
-                     bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+                    bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                    bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
                     refreshHeroStats(text_stats)
-                } else
+                } else {
                     bootsLevel++
-                text_boots_level.text = bootsLevel.toString()
-                 bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
-                 bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
-                refreshHeroStats(text_stats)
+                    text_boots_level.text = bootsLevel.toString()
+                    bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
+                    bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
+                    refreshHeroStats(text_stats)
+                }
             }
 
         }
