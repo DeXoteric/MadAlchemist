@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_copy)
         onWindowFocusChanged(true)
 
 
@@ -142,29 +142,29 @@ class MainActivity : AppCompatActivity() {
         buttonKillBoss.text = getSmallCapsString("Fight the Boss!")
         buttonKillBoss.setOnClickListener(clickListener)
 
-        // inicjalizacja inventory layouts
-        val layoutAmulet: LinearLayout = findViewById(R.id.layout_amulet)
-        layoutAmulet.setOnClickListener(clickListener)
-        val layoutHelmet: LinearLayout = findViewById(R.id.layout_helmet)
-        layoutHelmet.setOnClickListener(clickListener)
-        val layoutCloak: LinearLayout = findViewById(R.id.layout_cloak)
-        layoutCloak.setOnClickListener(clickListener)
-        val layoutWeapon: LinearLayout = findViewById(R.id.layout_weapon)
-        layoutWeapon.setOnClickListener(clickListener)
-        val layoutChestplate: LinearLayout = findViewById(R.id.layout_chestplate)
-        layoutChestplate.setOnClickListener(clickListener)
-        val layoutShield: LinearLayout = findViewById(R.id.layout_shield)
-        layoutShield.setOnClickListener(clickListener)
-        val layoutGloves: LinearLayout = findViewById(R.id.layout_gloves)
-        layoutGloves.setOnClickListener(clickListener)
-        val layoutLeggings: LinearLayout = findViewById(R.id.layout_leggings)
-        layoutLeggings.setOnClickListener(clickListener)
-        val layoutBelt: LinearLayout = findViewById(R.id.layout_belt)
-        layoutBelt.setOnClickListener(clickListener)
-        val layoutRing: LinearLayout = findViewById(R.id.layout_ring)
-        layoutRing.setOnClickListener(clickListener)
-        val layoutBoots: LinearLayout = findViewById(R.id.layout_boots)
-        layoutBoots.setOnClickListener(clickListener)
+        // inicjalizacja inventory buttons
+        val buttonAmulet: ImageButton = findViewById(R.id.btn_amulet)
+        buttonAmulet.setOnClickListener(clickListener)
+        val buttonHelmet: ImageButton = findViewById(R.id.btn_helmet)
+        buttonHelmet.setOnClickListener(clickListener)
+        val buttonCloak: ImageButton = findViewById(R.id.btn_cloak)
+        buttonCloak.setOnClickListener(clickListener)
+        val buttonWeapon: ImageButton = findViewById(R.id.btn_weapon)
+        buttonWeapon.setOnClickListener(clickListener)
+        val buttonChestplate: ImageButton = findViewById(R.id.btn_chestplate)
+        buttonChestplate.setOnClickListener(clickListener)
+        val buttonShield: ImageButton = findViewById(R.id.btn_shield)
+        buttonShield.setOnClickListener(clickListener)
+        val buttonGloves: ImageButton = findViewById(R.id.btn_gloves)
+        buttonGloves.setOnClickListener(clickListener)
+        val buttonLeggings: ImageButton = findViewById(R.id.btn_leggings)
+        buttonLeggings.setOnClickListener(clickListener)
+        val buttonBelt: ImageButton = findViewById(R.id.btn_belt)
+        buttonBelt.setOnClickListener(clickListener)
+        val buttonRing: ImageButton = findViewById(R.id.btn_ring)
+        buttonRing.setOnClickListener(clickListener)
+        val buttonBoots: ImageButton = findViewById(R.id.btn_boots)
+        buttonBoots.setOnClickListener(clickListener)
 
 
         // inicjalizacja TextView
@@ -192,59 +192,59 @@ class MainActivity : AppCompatActivity() {
         textInventory.text = getSmallCapsString("Inventory")
 
         val textAmuletLevel: TextView = findViewById(R.id.text_amulet_level)
-        textAmuletLevel.text = amuletLevel.toString()
-        val textAmuletTier: TextView = findViewById(R.id.text_amulet_tier)
-        textAmuletTier.text = amuletTier.toString()
+        textAmuletLevel.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel")
+        val textAmuletName: TextView = findViewById(R.id.text_amulet_name)
+        textAmuletName.text = getSmallCapsString("Amulet")
 
         val textHelmetLevel: TextView = findViewById(R.id.text_helmet_level)
-        textHelmetLevel.text = helmetLevel.toString()
-        val textHelmetTier: TextView = findViewById(R.id.text_helmet_tier)
-        textHelmetTier.text = helmetTier.toString()
+        textHelmetLevel.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel")
+        val textHelmetName: TextView = findViewById(R.id.text_helmet_name)
+        textHelmetName.text = getSmallCapsString("Helmet")
 
-        val textCloakLevel: TextView = findViewById(R.id.text_cloak_level)
-        textCloakLevel.text = cloakLevel.toString()
-        val textCloakTier: TextView = findViewById(R.id.text_cloak_tier)
-        textCloakTier.text = cloakTier.toString()
-
-        val textWeaponLevel: TextView = findViewById(R.id.text_weapon_level)
-        textWeaponLevel.text = weaponLevel.toString()
-        val textWeaponTier: TextView = findViewById(R.id.text_weapon_tier)
-        textWeaponTier.text = weaponTier.toString()
-
-        val textChestplateLevel: TextView = findViewById(R.id.text_chestplate_level)
-        textChestplateLevel.text = chestplateLevel.toString()
-        val textChestplateTier: TextView = findViewById(R.id.text_chestplate_tier)
-        textChestplateTier.text = chestplateTier.toString()
-
-        val textShieldLevel: TextView = findViewById(R.id.text_shield_level)
-        textShieldLevel.text = shieldLevel.toString()
-        val textShieldTier: TextView = findViewById(R.id.text_shield_tier)
-        textShieldTier.text = shieldTier.toString()
-
-        val textGlovesLevel: TextView = findViewById(R.id.text_gloves_level)
-        textGlovesLevel.text = glovesLevel.toString()
-        val textGlovesTier: TextView = findViewById(R.id.text_gloves_tier)
-        textGlovesTier.text = glovesTier.toString()
-
-        val textLeggingsLevel: TextView = findViewById(R.id.text_leggings_level)
-        textLeggingsLevel.text = leggingsLevel.toString()
-        val textLeggingsTier: TextView = findViewById(R.id.text_leggings_tier)
-        textLeggingsTier.text = leggingsTier.toString()
-
-        val textBeltLevel: TextView = findViewById(R.id.text_belt_level)
-        textBeltLevel.text = beltLevel.toString()
-        val textBeltTier: TextView = findViewById(R.id.text_belt_tier)
-        textBeltTier.text = beltTier.toString()
-
-        val textRingLevel: TextView = findViewById(R.id.text_ring_level)
-        textRingLevel.text = ringLevel.toString()
-        val textRingTier: TextView = findViewById(R.id.text_ring_tier)
-        textRingTier.text = ringTier.toString()
-
-        val textBootsLevel: TextView = findViewById(R.id.text_boots_level)
-        textBootsLevel.text = bootsLevel.toString()
-        val textBootsTier: TextView = findViewById(R.id.text_boots_tier)
-        textBootsTier.text = bootsTier.toString()
+//        val textCloakLevel: TextView = findViewById(R.id.text_cloak_level)
+//        textCloakLevel.text = cloakLevel.toString()
+//        val textCloakTier: TextView = findViewById(R.id.text_cloak_tier)
+//        textCloakTier.text = cloakTier.toString()
+//
+//        val textWeaponLevel: TextView = findViewById(R.id.text_weapon_level)
+//        textWeaponLevel.text = weaponLevel.toString()
+//        val textWeaponTier: TextView = findViewById(R.id.text_weapon_tier)
+//        textWeaponTier.text = weaponTier.toString()
+//
+//        val textChestplateLevel: TextView = findViewById(R.id.text_chestplate_level)
+//        textChestplateLevel.text = chestplateLevel.toString()
+//        val textChestplateTier: TextView = findViewById(R.id.text_chestplate_tier)
+//        textChestplateTier.text = chestplateTier.toString()
+//
+//        val textShieldLevel: TextView = findViewById(R.id.text_shield_level)
+//        textShieldLevel.text = shieldLevel.toString()
+//        val textShieldTier: TextView = findViewById(R.id.text_shield_tier)
+//        textShieldTier.text = shieldTier.toString()
+//
+//        val textGlovesLevel: TextView = findViewById(R.id.text_gloves_level)
+//        textGlovesLevel.text = glovesLevel.toString()
+//        val textGlovesTier: TextView = findViewById(R.id.text_gloves_tier)
+//        textGlovesTier.text = glovesTier.toString()
+//
+//        val textLeggingsLevel: TextView = findViewById(R.id.text_leggings_level)
+//        textLeggingsLevel.text = leggingsLevel.toString()
+//        val textLeggingsTier: TextView = findViewById(R.id.text_leggings_tier)
+//        textLeggingsTier.text = leggingsTier.toString()
+//
+//        val textBeltLevel: TextView = findViewById(R.id.text_belt_level)
+//        textBeltLevel.text = beltLevel.toString()
+//        val textBeltTier: TextView = findViewById(R.id.text_belt_tier)
+//        textBeltTier.text = beltTier.toString()
+//
+//        val textRingLevel: TextView = findViewById(R.id.text_ring_level)
+//        textRingLevel.text = ringLevel.toString()
+//        val textRingTier: TextView = findViewById(R.id.text_ring_tier)
+//        textRingTier.text = ringTier.toString()
+//
+//        val textBootsLevel: TextView = findViewById(R.id.text_boots_level)
+//        textBootsLevel.text = bootsLevel.toString()
+//        val textBootsTier: TextView = findViewById(R.id.text_boots_tier)
+//        textBootsTier.text = bootsTier.toString()
 
         val textHeroStats: TextView = findViewById(R.id.text_hero_stats)
         textHeroStats.text = getSmallCapsString("Hero Stats")
@@ -296,57 +296,53 @@ class MainActivity : AppCompatActivity() {
             R.id.btn_achievements -> {
 
             }
-            R.id.layout_amulet -> {
+            R.id.btn_amulet -> {
                 if (amuletCost > gold) {
                     Toast.makeText(this, "Amulet Cost: ${format(amuletCost)}", Toast.LENGTH_SHORT).show()
                 } else {
                     if (amuletLevel == 100) {
                         amuletTier++
                         amuletLevel = 1
-                        text_amulet_tier.text = amuletTier.toString()
-                        text_amulet_level.text = amuletLevel.toString()
                         amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
                         amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
 
                     } else {
                         amuletLevel++
-                        text_amulet_level.text = amuletLevel.toString()
                         amuletAttackPower = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_LARGE)
                         amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
 
                     }
+                    text_amulet_level.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel")
                     gold -= amuletCost
                     text_gold_value.text = format(gold)
                 }
                 refreshHeroStats(text_stats)
                 amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier)
             }
-            R.id.layout_helmet -> {
+            R.id.btn_helmet -> {
                 if (helmetCost > gold) {
 
                 } else {
                     if (helmetLevel == 100) {
                         helmetTier++
                         helmetLevel = 1
-                        text_helmet_tier.text = helmetTier.toString()
-                        text_helmet_level.text = helmetLevel.toString()
                         helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
                         helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
 
                     } else {
                         helmetLevel++
-                        text_helmet_level.text = helmetLevel.toString()
                         helmetAttackPower = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_SMALL)
                         helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
 
                     }
+                    text_helmet_level.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel")
                     gold -= helmetCost
                     text_gold_value.text = format(gold)
                 }
                 refreshHeroStats(text_stats)
                 helmetCost = setInventoryCost(INVENTORY_BASE_COST, helmetLevel, helmetTier)
             }
-            R.id.layout_cloak -> {
+            R.id.btn_cloak -> {
                 if (cloakCost > gold) {
 
                 } else {
@@ -371,7 +367,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 cloakCost = setInventoryCost(INVENTORY_BASE_COST, cloakLevel, cloakTier)
             }
-            R.id.layout_weapon -> {
+            R.id.btn_weapon -> {
                 if (weaponCost > gold) {
 
                 } else {
@@ -397,7 +393,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 weaponCost = setInventoryCost(INVENTORY_BASE_COST, weaponLevel, weaponTier)
             }
-            R.id.layout_chestplate -> {
+            R.id.btn_chestplate -> {
                 if (chestplateCost > gold) {
 
                 } else {
@@ -422,7 +418,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 chestplateCost = setInventoryCost(INVENTORY_BASE_COST, chestplateLevel, chestplateTier)
             }
-            R.id.layout_shield -> {
+            R.id.btn_shield -> {
                 if (shieldCost > gold) {
 
                 } else {
@@ -447,7 +443,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 shieldCost = setInventoryCost(INVENTORY_BASE_COST, shieldLevel, shieldTier)
             }
-            R.id.layout_gloves -> {
+            R.id.btn_gloves -> {
                 if (glovesCost > gold) {
 
                 } else {
@@ -472,7 +468,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 glovesCost = setInventoryCost(INVENTORY_BASE_COST, glovesLevel, glovesTier)
             }
-            R.id.layout_leggings -> {
+            R.id.btn_leggings -> {
                 if (leggingsCost > gold) {
 
                 } else {
@@ -497,7 +493,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 leggingsCost = setInventoryCost(INVENTORY_BASE_COST, leggingsLevel, leggingsTier)
             }
-            R.id.layout_belt -> {
+            R.id.btn_belt -> {
                 if (beltCost > gold) {
 
                 } else {
@@ -522,7 +518,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 beltCost = setInventoryCost(INVENTORY_BASE_COST, beltLevel, beltTier)
             }
-            R.id.layout_ring -> {
+            R.id.btn_ring -> {
                 if (ringCost > gold) {
 
                 } else {
@@ -547,7 +543,7 @@ class MainActivity : AppCompatActivity() {
                 refreshHeroStats(text_stats)
                 ringCost = setInventoryCost(INVENTORY_BASE_COST, ringLevel, ringTier)
             }
-            R.id.layout_boots -> {
+            R.id.btn_boots -> {
                 if (bootsCost > gold) {
 
                 } else {
