@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ProgressBar
+import android.widget.TextView
 import com.dexoteric.monsterslayer.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -192,57 +195,57 @@ class MainActivity : AppCompatActivity() {
         textInventory.text = getSmallCapsString("Inventory")
 
         val textAmuletLevel: TextView = findViewById(R.id.text_amulet_level)
-        textAmuletLevel.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel")
+        textAmuletLevel.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel\n" + "Price: ${format(amuletCost)}")
         val textAmuletName: TextView = findViewById(R.id.text_amulet_name)
         textAmuletName.text = getSmallCapsString("Amulet")
 
         val textHelmetLevel: TextView = findViewById(R.id.text_helmet_level)
-        textHelmetLevel.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel")
+        textHelmetLevel.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel\n" + "Price: ${format(helmetCost)}")
         val textHelmetName: TextView = findViewById(R.id.text_helmet_name)
         textHelmetName.text = getSmallCapsString("Helmet")
 
         val textCloakLevel: TextView = findViewById(R.id.text_cloak_level)
-        textCloakLevel.text = getSmallCapsString("Tier $cloakTier : Level $cloakLevel")
+        textCloakLevel.text = getSmallCapsString("Tier $cloakTier : Level $cloakLevel\n" + "Price: ${format(cloakCost)}")
         val textCloakName: TextView = findViewById(R.id.text_cloak_name)
         textCloakName.text = getSmallCapsString("Cloak")
 
         val textWeaponLevel: TextView = findViewById(R.id.text_weapon_level)
-        textWeaponLevel.text = getSmallCapsString("Tier $weaponTier : Level $weaponLevel")
+        textWeaponLevel.text = getSmallCapsString("Tier $weaponTier : Level $weaponLevel\n" + "Price: ${format(weaponCost)}")
         val textWeaponName: TextView = findViewById(R.id.text_weapon_name)
         textWeaponName.text = getSmallCapsString("Weapon")
 
         val textChestplateLevel: TextView = findViewById(R.id.text_chestplate_level)
-        textChestplateLevel.text = getSmallCapsString("Tier $chestplateTier : Level $chestplateLevel")
+        textChestplateLevel.text = getSmallCapsString("Tier $chestplateTier : Level $chestplateLevel\n" + "Price: ${format(chestplateCost)}")
         val textChestplateName: TextView = findViewById(R.id.text_chestplate_name)
         textChestplateName.text = getSmallCapsString("Chestplate")
 
         val textShieldLevel: TextView = findViewById(R.id.text_shield_level)
-        textShieldLevel.text = getSmallCapsString("Tier $shieldTier : Level $shieldLevel")
+        textShieldLevel.text = getSmallCapsString("Tier $shieldTier : Level $shieldLevel\n" + "Price: ${format(shieldCost)}")
         val textShieldName: TextView = findViewById(R.id.text_shield_name)
         textShieldName.text = getSmallCapsString("Shield")
 
         val textGlovesLevel: TextView = findViewById(R.id.text_gloves_level)
-        textGlovesLevel.text = getSmallCapsString("Tier $glovesTier : Level $glovesLevel")
+        textGlovesLevel.text = getSmallCapsString("Tier $glovesTier : Level $glovesLevel\n" + "Price: ${format(glovesCost)}")
         val textGlovesName: TextView = findViewById(R.id.text_gloves_name)
         textGlovesName.text = getSmallCapsString("Gloves")
 
         val textLeggingsLevel: TextView = findViewById(R.id.text_leggings_level)
-        textLeggingsLevel.text = getSmallCapsString("Tier $leggingsTier : Level $leggingsLevel")
+        textLeggingsLevel.text = getSmallCapsString("Tier $leggingsTier : Level $leggingsLevel\n" + "Price: ${format(leggingsCost)}")
         val textLeggingsName: TextView = findViewById(R.id.text_leggings_name)
         textLeggingsName.text = getSmallCapsString("Leggings")
 
         val textBeltLevel: TextView = findViewById(R.id.text_belt_level)
-        textBeltLevel.text = getSmallCapsString("Tier $beltTier : Level $beltLevel")
+        textBeltLevel.text = getSmallCapsString("Tier $beltTier : Level $beltLevel\n" + "Price: ${format(beltCost)}")
         val textBeltName: TextView = findViewById(R.id.text_belt_name)
         textBeltName.text = getSmallCapsString("Belt")
 
         val textRingLevel: TextView = findViewById(R.id.text_ring_level)
-        textRingLevel.text = getSmallCapsString("Tier $ringTier : Level $ringLevel")
+        textRingLevel.text = getSmallCapsString("Tier $ringTier : Level $ringLevel\n" + "Price: ${format(ringCost)}")
         val textRingName: TextView = findViewById(R.id.text_ring_name)
         textRingName.text = getSmallCapsString("Ring")
 
         val textBootsLevel: TextView = findViewById(R.id.text_boots_level)
-        textBootsLevel.text = getSmallCapsString("Tier $bootsTier : Level $bootsLevel")
+        textBootsLevel.text = getSmallCapsString("Tier $bootsTier : Level $bootsLevel\n" + "Price: ${format(bootsCost)}")
         val textBootsName: TextView = findViewById(R.id.text_boots_name)
         textBootsName.text = getSmallCapsString("Boots")
 
@@ -299,7 +302,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.btn_amulet -> {
                 if (amuletCost > gold) {
-                    Toast.makeText(this, "Amulet Cost: ${format(amuletCost)}", Toast.LENGTH_SHORT).show()
+
                 } else {
                     if (amuletLevel == 100) {
                         amuletTier++
@@ -313,12 +316,12 @@ class MainActivity : AppCompatActivity() {
                         amuletDefense = setInventoryStat(amuletLevel, amuletTier, STAT_MULTIPLIER_SMALL)
 
                     }
-                    text_amulet_level.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel")
                     gold -= amuletCost
                     text_gold_value.text = format(gold)
                 }
                 refreshHeroStats(text_stats)
                 amuletCost = setInventoryCost(INVENTORY_BASE_COST, amuletLevel, amuletTier)
+                text_amulet_level.text = getSmallCapsString("Tier $amuletTier : Level $amuletLevel\n" + "Price: ${format(amuletCost)}")
             }
             R.id.btn_helmet -> {
                 if (helmetCost > gold) {
@@ -336,12 +339,12 @@ class MainActivity : AppCompatActivity() {
                         helmetDefense = setInventoryStat(helmetLevel, helmetTier, STAT_MULTIPLIER_LARGE)
 
                     }
-                    text_helmet_level.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel")
                     gold -= helmetCost
                     text_gold_value.text = format(gold)
                 }
                 refreshHeroStats(text_stats)
                 helmetCost = setInventoryCost(INVENTORY_BASE_COST, helmetLevel, helmetTier)
+                text_helmet_level.text = getSmallCapsString("Tier $helmetTier : Level $helmetLevel\n" + "Price: ${format(helmetCost)}")
             }
             R.id.btn_cloak -> {
                 if (cloakCost > gold) {
@@ -364,9 +367,11 @@ class MainActivity : AppCompatActivity() {
                     }
                     gold -= cloakCost
                     text_gold_value.text = format(gold)
+                    text_weapon_level.text = getSmallCapsString("Tier $weaponTier : Level $weaponLevel\n" + "Price: ${format(weaponCost)}")
                 }
                 refreshHeroStats(text_stats)
                 cloakCost = setInventoryCost(INVENTORY_BASE_COST, cloakLevel, cloakTier)
+                text_cloak_level.text = getSmallCapsString("Tier $cloakTier : Level $cloakLevel\n" + "Price: ${format(cloakCost)}")
             }
             R.id.btn_weapon -> {
                 if (weaponCost > gold) {
@@ -390,9 +395,11 @@ class MainActivity : AppCompatActivity() {
                     }
                     gold -= weaponCost
                     text_gold_value.text = format(gold)
+
                 }
                 refreshHeroStats(text_stats)
                 weaponCost = setInventoryCost(INVENTORY_BASE_COST, weaponLevel, weaponTier)
+                text_weapon_level.text = getSmallCapsString("Tier $weaponTier : Level $weaponLevel\n" + "Price: ${format(weaponCost)}")
             }
             R.id.btn_chestplate -> {
                 if (chestplateCost > gold) {
@@ -418,6 +425,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 refreshHeroStats(text_stats)
                 chestplateCost = setInventoryCost(INVENTORY_BASE_COST, chestplateLevel, chestplateTier)
+                text_chestplate_level.text = getSmallCapsString("Tier $chestplateTier : Level $chestplateLevel\n" + "Price: ${format(chestplateCost)}")
             }
             R.id.btn_shield -> {
                 if (shieldCost > gold) {
@@ -440,9 +448,11 @@ class MainActivity : AppCompatActivity() {
                     }
                     gold -= shieldCost
                     text_gold_value.text = format(gold)
+
                 }
                 refreshHeroStats(text_stats)
                 shieldCost = setInventoryCost(INVENTORY_BASE_COST, shieldLevel, shieldTier)
+                text_shield_level.text = getSmallCapsString("Tier $shieldTier : Level $shieldLevel\n" + "Price: ${format(shieldCost)}")
             }
             R.id.btn_gloves -> {
                 if (glovesCost > gold) {
@@ -468,6 +478,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 refreshHeroStats(text_stats)
                 glovesCost = setInventoryCost(INVENTORY_BASE_COST, glovesLevel, glovesTier)
+                text_gloves_level.text = getSmallCapsString("Tier $glovesTier : Level $glovesLevel\n" + "Price: ${format(glovesCost)}")
             }
             R.id.btn_leggings -> {
                 if (leggingsCost > gold) {
@@ -490,9 +501,11 @@ class MainActivity : AppCompatActivity() {
                     }
                     gold -= leggingsCost
                     text_gold_value.text = format(gold)
+
                 }
                 refreshHeroStats(text_stats)
                 leggingsCost = setInventoryCost(INVENTORY_BASE_COST, leggingsLevel, leggingsTier)
+                text_leggings_level.text = getSmallCapsString("Tier $leggingsTier : Level $leggingsLevel\n" + "Price: ${format(leggingsCost)}")
             }
             R.id.btn_belt -> {
                 if (beltCost > gold) {
@@ -518,6 +531,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 refreshHeroStats(text_stats)
                 beltCost = setInventoryCost(INVENTORY_BASE_COST, beltLevel, beltTier)
+                text_belt_level.text = getSmallCapsString("Tier $beltTier : Level $beltLevel\n" + "Price: ${format(beltCost)}")
             }
             R.id.btn_ring -> {
                 if (ringCost > gold) {
@@ -543,6 +557,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 refreshHeroStats(text_stats)
                 ringCost = setInventoryCost(INVENTORY_BASE_COST, ringLevel, ringTier)
+                text_ring_level.text = getSmallCapsString("Tier $ringTier : Level $ringLevel\n" + "Price: ${format(ringCost)}")
             }
             R.id.btn_boots -> {
                 if (bootsCost > gold) {
@@ -568,6 +583,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 refreshHeroStats(text_stats)
                 bootsCost = setInventoryCost(INVENTORY_BASE_COST, bootsLevel, bootsTier)
+                text_boots_level.text = getSmallCapsString("Tier $bootsTier : Level $bootsLevel\n" + "Price: ${format(bootsCost)}")
             }
 
         }
