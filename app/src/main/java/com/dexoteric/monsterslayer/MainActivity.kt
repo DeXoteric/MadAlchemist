@@ -201,50 +201,51 @@ class MainActivity : AppCompatActivity() {
         val textHelmetName: TextView = findViewById(R.id.text_helmet_name)
         textHelmetName.text = getSmallCapsString("Helmet")
 
-//        val textCloakLevel: TextView = findViewById(R.id.text_cloak_level)
-//        textCloakLevel.text = cloakLevel.toString()
-//        val textCloakTier: TextView = findViewById(R.id.text_cloak_tier)
-//        textCloakTier.text = cloakTier.toString()
-//
-//        val textWeaponLevel: TextView = findViewById(R.id.text_weapon_level)
-//        textWeaponLevel.text = weaponLevel.toString()
-//        val textWeaponTier: TextView = findViewById(R.id.text_weapon_tier)
-//        textWeaponTier.text = weaponTier.toString()
-//
-//        val textChestplateLevel: TextView = findViewById(R.id.text_chestplate_level)
-//        textChestplateLevel.text = chestplateLevel.toString()
-//        val textChestplateTier: TextView = findViewById(R.id.text_chestplate_tier)
-//        textChestplateTier.text = chestplateTier.toString()
-//
-//        val textShieldLevel: TextView = findViewById(R.id.text_shield_level)
-//        textShieldLevel.text = shieldLevel.toString()
-//        val textShieldTier: TextView = findViewById(R.id.text_shield_tier)
-//        textShieldTier.text = shieldTier.toString()
-//
-//        val textGlovesLevel: TextView = findViewById(R.id.text_gloves_level)
-//        textGlovesLevel.text = glovesLevel.toString()
-//        val textGlovesTier: TextView = findViewById(R.id.text_gloves_tier)
-//        textGlovesTier.text = glovesTier.toString()
-//
-//        val textLeggingsLevel: TextView = findViewById(R.id.text_leggings_level)
-//        textLeggingsLevel.text = leggingsLevel.toString()
-//        val textLeggingsTier: TextView = findViewById(R.id.text_leggings_tier)
-//        textLeggingsTier.text = leggingsTier.toString()
-//
-//        val textBeltLevel: TextView = findViewById(R.id.text_belt_level)
-//        textBeltLevel.text = beltLevel.toString()
-//        val textBeltTier: TextView = findViewById(R.id.text_belt_tier)
-//        textBeltTier.text = beltTier.toString()
-//
-//        val textRingLevel: TextView = findViewById(R.id.text_ring_level)
-//        textRingLevel.text = ringLevel.toString()
-//        val textRingTier: TextView = findViewById(R.id.text_ring_tier)
-//        textRingTier.text = ringTier.toString()
-//
-//        val textBootsLevel: TextView = findViewById(R.id.text_boots_level)
-//        textBootsLevel.text = bootsLevel.toString()
-//        val textBootsTier: TextView = findViewById(R.id.text_boots_tier)
-//        textBootsTier.text = bootsTier.toString()
+        val textCloakLevel: TextView = findViewById(R.id.text_cloak_level)
+        textCloakLevel.text = getSmallCapsString("Tier $cloakTier : Level $cloakLevel")
+        val textCloakName: TextView = findViewById(R.id.text_cloak_name)
+        textCloakName.text = getSmallCapsString("Cloak")
+
+        val textWeaponLevel: TextView = findViewById(R.id.text_weapon_level)
+        textWeaponLevel.text = getSmallCapsString("Tier $weaponTier : Level $weaponLevel")
+        val textWeaponName: TextView = findViewById(R.id.text_weapon_name)
+        textWeaponName.text = getSmallCapsString("Weapon")
+
+        val textChestplateLevel: TextView = findViewById(R.id.text_chestplate_level)
+        textChestplateLevel.text = getSmallCapsString("Tier $chestplateTier : Level $chestplateLevel")
+        val textChestplateName: TextView = findViewById(R.id.text_chestplate_name)
+        textChestplateName.text = getSmallCapsString("Chestplate")
+
+        val textShieldLevel: TextView = findViewById(R.id.text_shield_level)
+        textShieldLevel.text = getSmallCapsString("Tier $shieldTier : Level $shieldLevel")
+        val textShieldName: TextView = findViewById(R.id.text_shield_name)
+        textShieldName.text = getSmallCapsString("Shield")
+
+        val textGlovesLevel: TextView = findViewById(R.id.text_gloves_level)
+        textGlovesLevel.text = getSmallCapsString("Tier $glovesTier : Level $glovesLevel")
+        val textGlovesName: TextView = findViewById(R.id.text_gloves_name)
+        textGlovesName.text = getSmallCapsString("Gloves")
+
+        val textLeggingsLevel: TextView = findViewById(R.id.text_leggings_level)
+        textLeggingsLevel.text = getSmallCapsString("Tier $leggingsTier : Level $leggingsLevel")
+        val textLeggingsName: TextView = findViewById(R.id.text_leggings_name)
+        textLeggingsName.text = getSmallCapsString("Leggings")
+
+        val textBeltLevel: TextView = findViewById(R.id.text_belt_level)
+        textBeltLevel.text = getSmallCapsString("Tier $beltTier : Level $beltLevel")
+        val textBeltName: TextView = findViewById(R.id.text_belt_name)
+        textBeltName.text = getSmallCapsString("Belt")
+
+        val textRingLevel: TextView = findViewById(R.id.text_ring_level)
+        textRingLevel.text = getSmallCapsString("Tier $ringTier : Level $ringLevel")
+        val textRingName: TextView = findViewById(R.id.text_ring_name)
+        textRingName.text = getSmallCapsString("Ring")
+
+        val textBootsLevel: TextView = findViewById(R.id.text_boots_level)
+        textBootsLevel.text = getSmallCapsString("Tier $bootsTier : Level $bootsLevel")
+        val textBootsName: TextView = findViewById(R.id.text_boots_name)
+        textBootsName.text = getSmallCapsString("Boots")
+
 
         val textHeroStats: TextView = findViewById(R.id.text_hero_stats)
         textHeroStats.text = getSmallCapsString("Hero Stats")
