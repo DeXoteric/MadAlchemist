@@ -280,7 +280,7 @@
 
     <LinearLayout
         android:id="@+id/layout_inventory"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/layout_top_bar"
@@ -302,472 +302,695 @@
             android:textSize="16sp"
             tools:text="Inventory" />
 
-        <android.support.v7.widget.GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            app:columnCount="3"
-            app:rowCount="4">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
-                android:id="@+id/layout_amulet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="0"
-                app:layout_row="0">
+                android:id="@+id/layout_inventory_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/text_amulet_tier"
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_weapon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
+                    android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:id="@+id/icon_amulet"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_amulet" />
+                    <ImageView
+                        android:id="@+id/icon_weapon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_weapon" />
 
-                <TextView
-                    android:id="@+id/text_amulet_level"
+                    <TextView
+                        android:id="@+id/text_weapon_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_weapon"
+                        app:layout_constraintStart_toEndOf="@id/icon_weapon"
+                        app:layout_constraintTop_toTopOf="@id/icon_weapon"
+                        tools:text="Weapon" />
+
+                    <TextView
+                        android:id="@+id/text_weapon_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_weapon"
+                        app:layout_constraintStart_toEndOf="@id/icon_weapon"
+                        app:layout_constraintTop_toBottomOf="@id/text_weapon_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_weapon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_shield"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_shield"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_shield" />
+
+                    <TextView
+                        android:id="@+id/text_shield_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_shield"
+                        app:layout_constraintStart_toEndOf="@id/icon_shield"
+                        app:layout_constraintTop_toTopOf="@id/icon_shield"
+                        tools:text="Shield" />
+
+                    <TextView
+                        android:id="@+id/text_shield_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_shield"
+                        app:layout_constraintStart_toEndOf="@id/icon_shield"
+                        app:layout_constraintTop_toBottomOf="@id/text_shield_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_shield"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_helmet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_helmet"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_helmet" />
+
+                    <TextView
+                        android:id="@+id/text_helmet_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_helmet"
+                        app:layout_constraintStart_toEndOf="@id/icon_helmet"
+                        app:layout_constraintTop_toTopOf="@id/icon_helmet"
+                        tools:text="Helmet" />
+
+                    <TextView
+                        android:id="@+id/text_helmet_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_helmet"
+                        app:layout_constraintStart_toEndOf="@id/icon_helmet"
+                        app:layout_constraintTop_toBottomOf="@id/text_helmet_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_helmet"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_cloak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_cloak"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_cloak" />
+
+                    <TextView
+                        android:id="@+id/text_cloak_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cloak"
+                        app:layout_constraintStart_toEndOf="@id/icon_cloak"
+                        app:layout_constraintTop_toTopOf="@id/icon_cloak"
+                        tools:text="Cloak" />
+
+                    <TextView
+                        android:id="@+id/text_cloak_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cloak"
+                        app:layout_constraintStart_toEndOf="@id/icon_cloak"
+                        app:layout_constraintTop_toBottomOf="@id/text_cloak_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_cloak"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_chestplate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_chestplate"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_chestplate" />
+
+                    <TextView
+                        android:id="@+id/text_chestplate_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_chestplate"
+                        app:layout_constraintStart_toEndOf="@id/icon_chestplate"
+                        app:layout_constraintTop_toTopOf="@id/icon_chestplate"
+                        tools:text="Chestplate" />
+
+                    <TextView
+                        android:id="@+id/text_chestplate_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_chestplate"
+                        app:layout_constraintStart_toEndOf="@id/icon_chestplate"
+                        app:layout_constraintTop_toBottomOf="@id/text_chestplate_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_chestplate"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_gloves"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_gloves"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_gloves" />
+
+                    <TextView
+                        android:id="@+id/text_gloves_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_gloves"
+                        app:layout_constraintStart_toEndOf="@id/icon_gloves"
+                        app:layout_constraintTop_toTopOf="@id/icon_gloves"
+                        tools:text="Gloves" />
+
+                    <TextView
+                        android:id="@+id/text_gloves_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_gloves"
+                        app:layout_constraintStart_toEndOf="@id/icon_gloves"
+                        app:layout_constraintTop_toBottomOf="@id/text_gloves_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_gloves"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_belt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_belt"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_belt" />
+
+                    <TextView
+                        android:id="@+id/text_belt_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_belt"
+                        app:layout_constraintStart_toEndOf="@id/icon_belt"
+                        app:layout_constraintTop_toTopOf="@id/icon_belt"
+                        tools:text="Belt" />
+
+                    <TextView
+                        android:id="@+id/text_belt_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_belt"
+                        app:layout_constraintStart_toEndOf="@id/icon_belt"
+                        app:layout_constraintTop_toBottomOf="@id/text_belt_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_belt"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_leggings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_leggings"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_leggings" />
+
+                    <TextView
+                        android:id="@+id/text_leggings_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_leggings"
+                        app:layout_constraintStart_toEndOf="@id/icon_leggings"
+                        app:layout_constraintTop_toTopOf="@id/icon_leggings"
+                        tools:text="Leggings" />
+
+                    <TextView
+                        android:id="@+id/text_leggings_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_leggings"
+                        app:layout_constraintStart_toEndOf="@id/icon_leggings"
+                        app:layout_constraintTop_toBottomOf="@id/text_leggings_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_leggings"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_boots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_boots"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_boots" />
+
+                    <TextView
+                        android:id="@+id/text_boots_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_boots"
+                        app:layout_constraintStart_toEndOf="@id/icon_boots"
+                        app:layout_constraintTop_toTopOf="@id/icon_boots"
+                        tools:text="Boots" />
+
+                    <TextView
+                        android:id="@+id/text_boots_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_boots"
+                        app:layout_constraintStart_toEndOf="@id/icon_boots"
+                        app:layout_constraintTop_toBottomOf="@id/text_boots_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_boots"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_amulet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/icon_amulet"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_amulet" />
+
+                    <TextView
+                        android:id="@+id/text_amulet_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_amulet"
+                        app:layout_constraintStart_toEndOf="@id/icon_amulet"
+                        app:layout_constraintTop_toTopOf="@id/icon_amulet"
+                        tools:text="Amulet" />
+
+                    <TextView
+                        android:id="@+id/text_amulet_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_amulet"
+                        app:layout_constraintStart_toEndOf="@id/icon_amulet"
+                        app:layout_constraintTop_toBottomOf="@id/text_amulet_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_amulet"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_ring"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icon_ring"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_ring" />
+
+                    <TextView
+                        android:id="@+id/text_ring_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text10sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_ring"
+                        app:layout_constraintStart_toEndOf="@id/icon_ring"
+                        app:layout_constraintTop_toTopOf="@id/icon_ring"
+                        tools:text="Ring" />
+
+                    <TextView
+                        android:id="@+id/text_ring_level"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/btn_ring"
+                        app:layout_constraintStart_toEndOf="@id/icon_ring"
+                        app:layout_constraintTop_toBottomOf="@id/text_ring_name"
+                        tools:text="Tier 1 : Level 100" />
+
+                    <ImageButton
+                        android:id="@+id/btn_ring"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/stroke_white"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_helmet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="1"
-                app:layout_row="0">
-
-                <TextView
-                    android:id="@+id/text_helmet_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_helmet"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_helmet" />
-
-                <TextView
-                    android:id="@+id/text_helmet_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_cloak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="2"
-                app:layout_row="0">
-
-                <TextView
-                    android:id="@+id/text_cloak_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_cloak"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_cloak" />
-
-                <TextView
-                    android:id="@+id/text_cloak_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_weapon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="0"
-                app:layout_row="1">
-
-                <TextView
-                    android:id="@+id/text_weapon_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_weapon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_weapon" />
-
-                <TextView
-                    android:id="@+id/text_weapon_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_chestplate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="1"
-                app:layout_row="1">
-
-                <TextView
-                    android:id="@+id/text_chestplate_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_chestplate"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_chestplate" />
-
-                <TextView
-                    android:id="@+id/text_chestplate_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_shield"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="2"
-                app:layout_row="1">
-
-                <TextView
-                    android:id="@+id/text_shield_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_shield"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_shield" />
-
-                <TextView
-                    android:id="@+id/text_shield_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_gloves"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="0"
-                app:layout_row="2">
-
-                <TextView
-                    android:id="@+id/text_gloves_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_gloves"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_gloves" />
-
-                <TextView
-                    android:id="@+id/text_gloves_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_leggings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="1"
-                app:layout_row="2">
-
-                <TextView
-                    android:id="@+id/text_leggings_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_leggings"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_leggings" />
-
-                <TextView
-                    android:id="@+id/text_leggings_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_belt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="2"
-                app:layout_row="2">
-
-                <TextView
-                    android:id="@+id/text_belt_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_belt"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_belt" />
-
-                <TextView
-                    android:id="@+id/text_belt_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_ring"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="0"
-                app:layout_row="3">
-
-                <TextView
-                    android:id="@+id/text_ring_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_ring"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_ring" />
-
-                <TextView
-                    android:id="@+id/text_ring_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_boots"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ui_frame"
-                android:orientation="vertical"
-                app:layout_column="1"
-                app:layout_row="3">
-
-                <TextView
-                    android:id="@+id/text_boots_tier"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="2" />
-
-                <ImageView
-                    android:id="@+id/icon_boots"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:contentDescription="@string/content_description"
-                    app:srcCompat="@drawable/icon_boots" />
-
-                <TextView
-                    android:id="@+id/text_boots_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/text10sp"
-                    tools:text="100" />
-            </LinearLayout>
+        </ScrollView>
 
 
-        </android.support.v7.widget.GridLayout>
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/layout_statistics"
-        android:layout_width="170dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="false"

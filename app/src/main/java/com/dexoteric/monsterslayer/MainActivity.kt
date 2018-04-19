@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_copy)
+        setContentView(R.layout.activity_main)
         onWindowFocusChanged(true)
 
 
@@ -353,14 +353,11 @@ class MainActivity : AppCompatActivity() {
                     if (cloakLevel == 100) {
                         cloakTier++
                         cloakLevel = 1
-                        text_cloak_tier.text = cloakTier.toString()
-                        text_cloak_level.text = cloakLevel.toString()
                         cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
                         cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
 
                     } else {
                         cloakLevel++
-                        text_cloak_level.text = cloakLevel.toString()
                         cloakAttackPower = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
                         cloakDefense = setInventoryStat(cloakLevel, cloakTier, STAT_MULTIPLIER_NORMAL)
 
@@ -380,14 +377,11 @@ class MainActivity : AppCompatActivity() {
                     if (weaponLevel == 100) {
                         weaponTier++
                         weaponLevel = 1
-                        text_weapon_tier.text = weaponTier.toString()
-                        text_weapon_level.text = weaponLevel.toString()
                         weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
                         weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
 
                     } else {
                         weaponLevel++
-                        text_weapon_level.text = weaponLevel.toString()
                         weaponAttackPower = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_LARGER)
                         weaponDefense = setInventoryStat(weaponLevel, weaponTier, STAT_MULTIPLIER_SMALLER)
 
@@ -408,14 +402,11 @@ class MainActivity : AppCompatActivity() {
                     if (chestplateLevel == 100) {
                         chestplateTier++
                         chestplateLevel = 1
-                        text_chestplate_tier.text = chestplateTier.toString()
-                        text_chestplate_level.text = chestplateLevel.toString()
                         chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
                         chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
 
                     } else {
                         chestplateLevel++
-                        text_chestplate_level.text = chestplateLevel.toString()
                         chestplateAttackPower = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_SMALLER)
                         chestplateDefense = setInventoryStat(chestplateLevel, chestplateTier, STAT_MULTIPLIER_LARGER)
 
@@ -434,14 +425,11 @@ class MainActivity : AppCompatActivity() {
                     if (shieldLevel == 100) {
                         shieldTier++
                         shieldLevel = 1
-                        text_shield_tier.text = shieldTier.toString()
-                        text_shield_level.text = shieldLevel.toString()
                         shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
                         shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
 
                     } else {
                         shieldLevel++
-                        text_shield_level.text = shieldLevel.toString()
                         shieldAttackPower = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_SMALLER)
                         shieldDefense = setInventoryStat(shieldLevel, shieldTier, STAT_MULTIPLIER_LARGER)
 
@@ -461,14 +449,11 @@ class MainActivity : AppCompatActivity() {
                     if (glovesLevel == 100) {
                         glovesTier++
                         glovesLevel = 1
-                        text_gloves_tier.text = glovesTier.toString()
-                        text_gloves_level.text = glovesLevel.toString()
                         glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
                         glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
 
                     } else {
                         glovesLevel++
-                        text_gloves_level.text = glovesLevel.toString()
                         glovesAttackPower = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_LARGE)
                         glovesDefense = setInventoryStat(glovesLevel, glovesTier, STAT_MULTIPLIER_SMALL)
 
@@ -487,14 +472,11 @@ class MainActivity : AppCompatActivity() {
                     if (leggingsLevel == 100) {
                         leggingsTier++
                         leggingsLevel = 1
-                        text_leggings_tier.text = leggingsTier.toString()
-                        text_leggings_level.text = leggingsLevel.toString()
                         leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
                         leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
 
                     } else {
                         leggingsLevel++
-                        text_leggings_level.text = leggingsLevel.toString()
                         leggingsAttackPower = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_SMALL)
                         leggingsDefense = setInventoryStat(leggingsLevel, leggingsTier, STAT_MULTIPLIER_LARGE)
 
@@ -514,14 +496,11 @@ class MainActivity : AppCompatActivity() {
                     if (beltLevel == 100) {
                         beltTier++
                         beltLevel = 1
-                        text_belt_tier.text = beltTier.toString()
-                        text_belt_level.text = beltLevel.toString()
                         beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
                         beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
 
                     } else {
                         beltLevel++
-                        text_belt_level.text = beltLevel.toString()
                         beltAttackPower = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_LARGE)
                         beltDefense = setInventoryStat(beltLevel, beltTier, STAT_MULTIPLIER_SMALL)
 
@@ -540,14 +519,11 @@ class MainActivity : AppCompatActivity() {
                     if (ringLevel == 100) {
                         ringTier++
                         ringLevel = 1
-                        text_ring_tier.text = ringTier.toString()
-                        text_ring_level.text = ringLevel.toString()
                         ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
                         ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
 
                     } else {
                         ringLevel++
-                        text_ring_level.text = ringLevel.toString()
                         ringAttackPower = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_LARGER)
                         ringDefense = setInventoryStat(ringLevel, ringTier, STAT_MULTIPLIER_SMALLER)
 
@@ -566,14 +542,11 @@ class MainActivity : AppCompatActivity() {
                     if (bootsLevel == 100) {
                         bootsTier++
                         bootsLevel = 1
-                        text_boots_tier.text = bootsTier.toString()
-                        text_boots_level.text = bootsLevel.toString()
                         bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
                         bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
 
                     } else {
                         bootsLevel++
-                        text_boots_level.text = bootsLevel.toString()
                         bootsAttackPower = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_SMALL)
                         bootsDefense = setInventoryStat(bootsLevel, bootsTier, STAT_MULTIPLIER_LARGE)
 
